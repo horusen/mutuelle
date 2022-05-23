@@ -2,12 +2,14 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MutuelCreateComponent } from './mutuel-create/mutuel-create.component';
+import { MutuelShowComponent } from './mutuel-show/mutuel-show.component';
+import { MutuelleListComponent } from './mutuelle-list/mutuelle-list.component';
 import { RecapitulatifComponent } from './recapitulatif/recapitulatif.component';
 
 const routes: Routes = [
   {
-    path: '',
-    component: DashboardComponent,
+    path: 'list',
+    component: MutuelleListComponent,
   },
   {
     path: 'create',
@@ -16,6 +18,14 @@ const routes: Routes = [
   {
     path: 'recap',
     component: RecapitulatifComponent,
+  },
+  {
+    path: 'recap/:id',
+    component: MutuelShowComponent,
+  },
+  {
+    path: '**',
+    redirectTo: 'list',
   },
 ];
 

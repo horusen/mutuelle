@@ -13,6 +13,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RecapitulatifComponent } from './recapitulatif/recapitulatif.component';
 import { MutuelleListComponent } from './mutuelle-list/mutuelle-list.component';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
+import { MutuelShowComponent } from './mutuel-show/mutuel-show.component';
 
 registerLocaleData(localeFr, 'fr');
 
@@ -23,6 +24,7 @@ registerLocaleData(localeFr, 'fr');
     DashboardComponent,
     RecapitulatifComponent,
     MutuelleListComponent,
+    MutuelShowComponent,
   ],
   imports: [
     BrowserModule,

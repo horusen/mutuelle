@@ -1,8 +1,51 @@
-<div class="container">
-  <div class="card">
-    <div class="card-header"><i class="fas fa-list-alt mr-2"></i> Liste des mutuelles</div>
-    <div class="card-body">
+<!-- <div class="container"> -->
+<div class="card">
+  <div class="card-header"><i class="fas fa-list-alt mr-2"></i> Liste des mutuelles</div>
+  <div class="card-body">
+    <table class="table table-striped"
+           *ngIf="data.length">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Région</th>
+          <th scope="col">Département</th>
+          <th scope="col">Commune</th>
+          <th scope="col">Mutuelle de santé</th>
+          <th scope="col">Type</th>
+          <th scope="col">Total cas</th>
+          <th scope="col">Total cout</th>
+          <th scope="col"><b>Action</b></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let element of data; index as i">
+          <th scope="row">{{ i + 1 }}</th>
+          <td>
+            {{ element.structure.region[0].libelle }}
+          </td>
+          <td>{{ element.structure.departement[0].libelle }}</td>
+          <td>{{ element.structure.commune[0].libelle }}</td>
+          <td>{{ element.structure.mutuelle_de_sante[0].libelle }}</td>
+          <td>{{ element.structure.type[0].libelle }}</td>
+          <td>{{ element.total.total | number }}</td>
+          <td>{{ (element.total.total_cout | number) + ' F CFA'}}</td>
+          <td class="d-flex justify-content-around">
+            <a [routerLink]="['/recap', i + 1]"><i class="fas fa-eye text-primary"></i></a>
+            <a routerLink="./"><i class="fas fa-edit text-success"></i></a>
+            <a routerLink="./"><i class="fas fa-trash text-danger"></i></a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
 
+    <div class="row"
+         *ngIf="!data.length">
+      <div class="col-md-12 text-center noData">
+        <div class="col-md-12 mt-2 p-5">
+          <h5>Aucune donnée disponible</h5>
+        </div>
+      </div>
     </div>
   </div>
 </div>
+<!-- </div> -->

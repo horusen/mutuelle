@@ -7,23 +7,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MutuelleListComponent implements OnInit {
   data: any[] = [];
-  settings = {
-    columns: {
-      id: {
-        title: 'ID',
-      },
-      region: {
-        title: 'Full Name',
-      },
-      departement: {
-        title: 'User Name',
-      },
-      email: {
-        title: 'Email',
-      },
-    },
-  };
+  // settings = {
+  //   columns: {
+
+  //     region: {
+  //       title: 'Région',
+  //       titleField:[0].libelle
+  //     },
+  //     departement: {
+  //       title: 'Département',
+  //     },
+  //     commune: {
+  //       title: 'Commune',
+  //     },
+  //     mutuelle: {
+  //       title: 'Mutuelle de santé',
+  //     },
+  //     action: {
+  //       title: 'Action',
+  //     },
+  //   },
+  // };
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    let unparsedData = localStorage.getItem('mutuelles');
+    this.data = unparsedData ? JSON.parse(unparsedData).reverse() : [];
+  }
 }
