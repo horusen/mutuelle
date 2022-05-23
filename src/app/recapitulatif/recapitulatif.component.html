@@ -1,0 +1,248 @@
+<div class="container">
+  <div class="card"
+       *ngIf="recapService.recap">
+    <div class="card-header"><i class="fas fa-file-alt mr-2"></i> Recapitulatif des informations</div>
+    <div class="card-body">
+      <!-- Structure -->
+      <h6 class="text-dark font-weight-bolder">Structure</h6>
+      <div class="row mb-3">
+        <div class="col-4">
+          <p class=" mb-0 text-primary">Région</p>
+          <p class="tx-light">{{ recapService.recap.structure.region[0].libelle }}</p>
+        </div>
+        <div class="col-4">
+          <p class=" mb-0 text-primary">Département</p>
+          <p class="tx-light">{{ recapService.recap.structure.departement[0].libelle }}</p>
+        </div>
+        <div class="col-4">
+          <p class=" mb-0 text-primary">Commune</p>
+          <p class="tx-light">{{ recapService.recap.structure.commune[0].libelle }}</p>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-4">
+          <p class=" mb-0 text-primary">Structure</p>
+          <p class="tx-light">{{ recapService.recap.structure.mutuelle_de_sante[0].libelle }}</p>
+        </div>
+        <div class="col-4">
+          <p class=" mb-0 text-primary">Type</p>
+          <p class="tx-light">{{ recapService.recap.structure.type[0].libelle }}</p>
+        </div>
+        <div class="col-4">
+          <p class=" mb-0 text-primary">Date</p>
+          <p class="tx-light">{{ recapService.recap.structure.date.day + ' - ' + recapService.recap.structure.date.month + ' - '
+            +recapService.recap.structure.date.year
+            }}</p>
+        </div>
+      </div>
+      <hr>
+
+      <!-- Cas classique -->
+      <h6 class="text-dark font-weight-bolder">Cas classique</h6>
+      <div class="row mb-3">
+        <div class="col-4">
+          <p class=" mb-0 text-primary">Nombre de cas classique H</p>
+          <p class="tx-light">{{ recapService.recap.cas_classique.nombre_h }}</p>
+        </div>
+        <div class="col-4">
+          <p class=" mb-0 text-primary">Nombre de cas classique F</p>
+          <p class="tx-light">{{ recapService.recap.cas_classique.nombre_f }}</p>
+        </div>
+        <div class="col-4">
+          <p class=" mb-0 text-primary">Total Nombre</p>
+          <p class="tx-light">{{ recapService.recap.cas_classique.total}}</p>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-4">
+          <p class=" mb-0 text-primary">Cout H</p>
+          <p class="tx-light">{{ recapService.recap.cas_classique.cout_h }}</p>
+        </div>
+        <div class="col-4">
+          <p class=" mb-0 text-primary">Cout F</p>
+          <p class="tx-light">{{ recapService.recap.cas_classique.cout_f }}</p>
+        </div>
+        <div class="col-4">
+          <p class=" mb-0 text-primary">Total Cout</p>
+          <p class="tx-light">{{ recapService.recap.cas_classique.total_cout }}</p>
+        </div>
+      </div>
+      <hr>
+
+
+      <!-- Cas BSF -->
+      <h6 class="text-dark font-weight-bolder">Cas BSF</h6>
+      <div class="row mb-3">
+        <div class="col-4">
+          <p class=" mb-0 text-primary">Nombre de cas BSF H</p>
+          <p class="tx-light">{{ recapService.recap.cas_bsf.nombre_h }}</p>
+        </div>
+        <div class="col-4">
+          <p class=" mb-0 text-primary">Nombre de cas BSF F</p>
+          <p class="tx-light">{{ recapService.recap.cas_bsf.nombre_f }}</p>
+        </div>
+        <div class="col-4">
+          <p class=" mb-0 text-primary">Total Nombre</p>
+          <p class="tx-light">{{ recapService.recap.cas_bsf.total}}</p>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-4">
+          <p class=" mb-0 text-primary">Cout H</p>
+          <p class="tx-light">{{ recapService.recap.cas_bsf.cout_h }}</p>
+        </div>
+        <div class="col-4">
+          <p class=" mb-0 text-primary">Cout F</p>
+          <p class="tx-light">{{ recapService.recap.cas_bsf.cout_f }}</p>
+        </div>
+        <div class="col-4">
+          <p class=" mb-0 text-primary">Total Cout</p>
+          <p class="tx-light">{{ recapService.recap.cas_bsf.total_cout }}</p>
+        </div>
+      </div>
+      <hr>
+
+      <!-- Cas CEC -->
+      <h6 class="text-dark font-weight-bolder">Cas CEC</h6>
+      <div class="row mb-3">
+        <div class="col-4">
+          <p class=" mb-0 text-primary">Nombre de cas CEC H</p>
+          <p class="tx-light">{{ recapService.recap.cas_cec.nombre_h }}</p>
+        </div>
+        <div class="col-4">
+          <p class=" mb-0 text-primary">Nombre de cas CEC F</p>
+          <p class="tx-light">{{ recapService.recap.cas_cec.nombre_f }}</p>
+        </div>
+        <div class="col-4">
+          <p class=" mb-0 text-primary">Total Nombre</p>
+          <p class="tx-light">{{ recapService.recap.cas_cec.total}}</p>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-4">
+          <p class=" mb-0 text-primary">Cout H</p>
+          <p class="tx-light">{{ recapService.recap.cas_cec.cout_h }}</p>
+        </div>
+        <div class="col-4">
+          <p class=" mb-0 text-primary">Cout F</p>
+          <p class="tx-light">{{ recapService.recap.cas_cec.cout_f }}</p>
+        </div>
+        <div class="col-4">
+          <p class=" mb-0 text-primary">Total Cout</p>
+          <p class="tx-light">{{ recapService.recap.cas_cec.total_cout }}</p>
+        </div>
+      </div>
+      <hr>
+
+
+      <!-- Cas eleve -->
+      <h6 class="text-dark font-weight-bolder">Cas élèves</h6>
+      <div class="row mb-3">
+        <div class="col-4">
+          <p class=" mb-0 text-primary">Nombre de cas élèves H</p>
+          <p class="tx-light">{{ recapService.recap.cas_eleve.nombre_h }}</p>
+        </div>
+        <div class="col-4">
+          <p class=" mb-0 text-primary">Nombre de cas élèves F</p>
+          <p class="tx-light">{{ recapService.recap.cas_eleve.nombre_f }}</p>
+        </div>
+        <div class="col-4">
+          <p class=" mb-0 text-primary">Total Nombre</p>
+          <p class="tx-light">{{ recapService.recap.cas_eleve.total}}</p>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-4">
+          <p class=" mb-0 text-primary">Cout H</p>
+          <p class="tx-light">{{ recapService.recap.cas_eleve.cout_h }}</p>
+        </div>
+        <div class="col-4">
+          <p class=" mb-0 text-primary">Cout F</p>
+          <p class="tx-light">{{ recapService.recap.cas_eleve.cout_f }}</p>
+        </div>
+        <div class="col-4">
+          <p class=" mb-0 text-primary">Total Cout</p>
+          <p class="tx-light">{{ recapService.recap.cas_eleve.total_cout }}</p>
+        </div>
+      </div>
+      <hr>
+
+
+      <!-- Cas ndongo daara -->
+      <h6 class="text-dark font-weight-bolder">Cas ndongo daara</h6>
+      <div class="row mb-3">
+        <div class="col-4">
+          <p class=" mb-0 text-primary">Nombre de cas ndongo daara H</p>
+          <p class="tx-light">{{ recapService.recap.cas_ndongo_daara.nombre_h }}</p>
+        </div>
+        <div class="col-4">
+          <p class=" mb-0 text-primary">Nombre de cas ndongo daara F</p>
+          <p class="tx-light">{{ recapService.recap.cas_ndongo_daara.nombre_f }}</p>
+        </div>
+        <div class="col-4">
+          <p class=" mb-0 text-primary">Total Nombre</p>
+          <p class="tx-light">{{ recapService.recap.cas_ndongo_daara.total}}</p>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-4">
+          <p class=" mb-0 text-primary">Cout H</p>
+          <p class="tx-light">{{ recapService.recap.cas_ndongo_daara.cout_h }}</p>
+        </div>
+        <div class="col-4">
+          <p class=" mb-0 text-primary">Cout F</p>
+          <p class="tx-light">{{ recapService.recap.cas_ndongo_daara.cout_f }}</p>
+        </div>
+        <div class="col-4">
+          <p class=" mb-0 text-primary">Total Cout</p>
+          <p class="tx-light">{{ recapService.recap.cas_ndongo_daara.total_cout }}</p>
+        </div>
+      </div>
+      <hr>
+
+
+      <!-- Cas homme -->
+      <h6 class="text-dark font-weight-bolder">Total</h6>
+      <div class="row mb-3">
+        <div class="col-4">
+          <p class=" mb-0 text-primary">Nombre total de cas H</p>
+          <p class="tx-light">{{ recapService.recap.total.nombre_h }}</p>
+        </div>
+        <div class="col-4">
+          <p class=" mb-0 text-primary">Nombre total de cas F</p>
+          <p class="tx-light">{{ recapService.recap.total.nombre_f }}</p>
+        </div>
+        <div class="col-4">
+          <p class=" mb-0 text-primary">Total final Nombre</p>
+          <p class="tx-light">{{ recapService.recap.total.total }}</p>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-4">
+          <p class=" mb-0 text-primary">Cout total H</p>
+          <p class="tx-light">{{ recapService.recap.total.cout_h }}</p>
+        </div>
+        <div class="col-4">
+          <p class=" mb-0 text-primary">Cout total F</p>
+          <p class="tx-light">{{ recapService.recap.total.cout_f }}</p>
+        </div>
+        <div class="col-4">
+          <p class=" mb-0 text-primary">Total final Cout</p>
+          <p class="tx-light">{{ recapService.recap.total.total_cout }}</p>
+        </div>
+      </div>
+      <hr>
+
+      <div class="d-flex w-100 justify-content-between">
+        <button type="submit"
+                class="btn btn-lg d-flex align-items-center btn-primary"> Modifier <i class="fas  d-inline-block ml-2 fa-edit"></i>
+        </button>
+
+        <button type="button"
+                (click)="saveMutuelle()"
+                class="btn btn-lg d-flex align-items-center btn-primary">Valider <i class="fas  d-inline-block ml-2 fa-check"></i></button>
+      </div>
+
+    </div>
+  </div>
+</div>
