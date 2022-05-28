@@ -2,12 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
-import { CommuneService } from '../commune.service';
-import { DepartementService } from '../departement.service';
+import { CommuneService } from '../communes/commune.service';
+import { DepartementService } from '../departements/departement.service';
 import { MutuelleDeSanteService } from '../mutuelle-de-sante.service';
 import { RecapitulatifService } from '../recapitulatif.service';
-import { RegionService } from '../region.service';
-import { TypeDeMutuelleService } from '../type-de-mutuelle.service';
+import { RegionService } from '../regions/region.service';
+import { TypeMutuellesService } from '../type-mutuelles/type-mutuelles.service';
 
 @Component({
   selector: 'app-mutuel-create',
@@ -30,7 +30,7 @@ export class MutuelCreateComponent implements OnInit {
   //   disabled: true,
   // };
   constructor(
-    public typeService: TypeDeMutuelleService,
+    public typeService: TypeMutuellesService,
     public regionService: RegionService,
     public departementService: DepartementService,
     public communeService: CommuneService,
@@ -43,7 +43,7 @@ export class MutuelCreateComponent implements OnInit {
   ngOnInit(): void {
     this.initialiseForm();
     this.regionService.getData();
-    this.typeService.getData();
+    // this.typeService.getData();
   }
 
   changeNav(nav: any) {

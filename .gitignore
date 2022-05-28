@@ -6,6 +6,10 @@
 # Only exists if Bazel was run
 /bazel-out
 
+todo.todo
+
+note.txt
+
 # dependencies
 /node_modules
 

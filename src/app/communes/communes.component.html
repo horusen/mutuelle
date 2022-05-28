@@ -1,0 +1,24 @@
+<div class="d-flex align-items-center justify-content-between">
+  <h5 class="my-3"><i class="fas fa-list"></i> Liste des communes</h5>
+  <button class="btn btn-sm btn-success"
+          [routerLink]="['./']"
+          [fragment]="'add-communes'"><i class="fas fa-plus"></i> Ajouter</button>
+
+</div>
+
+<app-communes-list (tableEvent)="onTableEvent($event)"></app-communes-list>
+
+
+
+
+
+<app-modal [configuration]="{ name: 'communes-create-modal', titre: 'Ajouter une commune', icone:'plus', taille: 'md' }"
+           (closed)="helper.navigation.deleteFragmentFromUrl()">
+  <app-communes-create (create)="onCreated()"></app-communes-create>
+</app-modal>
+
+
+<app-modal [configuration]="{ name: 'communes-edit-modal', titre: 'Modifier les details de la commune', icone:'edit', taille: 'md' }"
+           (closed)="helper.navigation.deleteFragmentFromUrl()">
+  <app-communes-edit (edited)="onEdited()"></app-communes-edit>
+</app-modal>

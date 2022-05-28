@@ -1,0 +1,176 @@
+<div *ngIf="single">
+  <!-- Structure -->
+  <h6 class="text-dark font-weight-bolder">Structure</h6>
+  <div class="row mb-3">
+    <div class="col-4">
+      <p class=" mb-0 text-primary">Région</p>
+      <p class="tx-light">{{ single.region.libelle }}</p>
+    </div>
+    <div class="col-4">
+      <p class=" mb-0 text-primary">Département</p>
+      <p class="tx-light">{{ single.departement.libelle }}</p>
+    </div>
+    <div class="col-4">
+      <p class=" mb-0 text-primary">Commune</p>
+      <p class="tx-light">{{ single.commune.libelle }}</p>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col-4">
+      <p class=" mb-0 text-primary">Mutuelle de santé</p>
+      <p class="tx-light">{{ single.mutuelle.libelle }}</p>
+    </div>
+    <div class="col-4">
+      <p class=" mb-0 text-primary">Type de mutuelle de santé</p>
+      <p class="tx-light">{{ single.type.libelle }}</p>
+    </div>
+    <div class="col-4">
+      <p class=" mb-0 text-primary">Date</p>
+      <p class="tx-light">{{ date.getDay() +'/'+date.getMonth() +'/'+date.getFullYear() }}</p>
+    </div>
+
+  </div>
+  <div class="row mb-3">
+
+    <div class="col-4">
+      <p class=" mb-0 text-primary">Type de prestation</p>
+      <p class="tx-light">{{ single.type_prestation.libelle }}</p>
+    </div>
+  </div>
+  <hr>
+
+  <!-- Cas classique -->
+  <h6 class="text-dark font-weight-bolder">Cas classique</h6>
+  <div class="row mb-3">
+    <div class="col-4">
+      <p class=" mb-0 text-primary">Nombre de cas classique H</p>
+      <p class="tx-light">{{ single.cas_classique_nombre_h }}</p>
+    </div>
+    <div class="col-4">
+      <p class=" mb-0 text-primary">Nombre de cas classique F</p>
+      <p class="tx-light">{{ single.cas_classique_nombre_f }}</p>
+    </div>
+    <div class="col-4">
+      <p class=" mb-0 text-primary">Total Nombre</p>
+      <p class="tx-light">{{ single.cas_classique_nombre_f + single.cas_classique_nombre_h}}</p>
+    </div>
+  </div>
+
+  <hr>
+
+
+  <!-- Cas BSF -->
+  <h6 class="text-dark font-weight-bolder">Cas BSF</h6>
+  <div class="row mb-3">
+    <div class="col-4">
+      <p class=" mb-0 text-primary">Nombre de cas BSF H</p>
+      <p class="tx-light">{{ single.cas_bsf_nombre_h }}</p>
+    </div>
+    <div class="col-4">
+      <p class=" mb-0 text-primary">Nombre de cas BSF F</p>
+      <p class="tx-light">{{ single.cas_bsf_nombre_f }}</p>
+    </div>
+    <div class="col-4">
+      <p class=" mb-0 text-primary">Total Nombre</p>
+      <p class="tx-light">{{single.cas_bsf_nombre_f + single.cas_bsf_nombre_h}}</p>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- Cas CEC -->
+  <h6 class="text-dark font-weight-bolder">Cas CEC</h6>
+  <div class="row mb-3">
+    <div class="col-4">
+      <p class=" mb-0 text-primary">Nombre de cas CEC H</p>
+      <p class="tx-light">{{ single.cas_cec_nombre_h }}</p>
+    </div>
+    <div class="col-4">
+      <p class=" mb-0 text-primary">Nombre de cas CEC F</p>
+      <p class="tx-light">{{ single.cas_cec_nombre_f }}</p>
+    </div>
+    <div class="col-4">
+      <p class=" mb-0 text-primary">Total Nombre</p>
+      <p class="tx-light">{{ single.cas_cec_nombre_f + single.cas_cec_nombre_f}}</p>
+    </div>
+  </div>
+
+  <hr>
+
+
+  <!-- Cas eleve -->
+  <h6 class="text-dark font-weight-bolder">Cas élèves</h6>
+  <div class="row mb-3">
+    <div class="col-4">
+      <p class=" mb-0 text-primary">Nombre de cas élèves H</p>
+      <p class="tx-light">{{ single.cas_eleve_nombre_h }}</p>
+    </div>
+    <div class="col-4">
+      <p class=" mb-0 text-primary">Nombre de cas élèves F</p>
+      <p class="tx-light">{{ single.cas_eleve_nombre_f }}</p>
+    </div>
+    <div class="col-4">
+      <p class=" mb-0 text-primary">Total Nombre</p>
+      <p class="tx-light">{{ single.cas_eleve_nombre_h + single.cas_eleve_nombre_f}}</p>
+    </div>
+  </div>
+
+  <hr>
+
+
+  <!-- Cas ndongo daara -->
+  <h6 class="text-dark font-weight-bolder">Cas ndongo daara</h6>
+  <div class="row mb-3">
+    <div class="col-4">
+      <p class=" mb-0 text-primary">Nombre de cas ndongo daara H</p>
+      <p class="tx-light">{{ single.cas_ndongo_daara_nombre_h }}</p>
+    </div>
+    <div class="col-4">
+      <p class=" mb-0 text-primary">Nombre de cas ndongo daara F</p>
+      <p class="tx-light">{{ single.cas_ndongo_daara_nombre_f }}</p>
+    </div>
+    <div class="col-4">
+      <p class=" mb-0 text-primary">Total Nombre</p>
+      <p class="tx-light">{{ single.cas_ndongo_daara_nombre_f + single.cas_ndongo_daara_nombre_h}}</p>
+    </div>
+  </div>
+
+  <hr>
+
+
+  <!-- Cas homme -->
+  <h6 class="text-dark font-weight-bolder">Total</h6>
+  <div class="row mb-3">
+    <div class="col-4">
+      <p class=" mb-0 text-primary">Nombre total de cas H</p>
+      <p class="tx-light">{{
+        single.cas_classique_nombre_h + single.cas_bsf_nombre_h + single.cas_cec_nombre_h +single.cas_ndongo_daara_nombre_h +
+        single.cas_eleve_nombre_h }}</p>
+    </div>
+    <div class="col-4">
+      <p class=" mb-0 text-primary">Nombre total de cas F</p>
+      <p class="tx-light">{{ single.cas_classique_nombre_f + single.cas_bsf_nombre_f + single.cas_cec_nombre_f +single.cas_ndongo_daara_nombre_f +
+        single.cas_eleve_nombre_f }}</p>
+    </div>
+    <div class="col-4">
+      <p class=" mb-0 text-primary">Total final Nombre</p>
+      <p class="tx-light">{{ single.cas_classique_nombre_h + single.cas_bsf_nombre_h + single.cas_cec_nombre_h +single.cas_ndongo_daara_nombre_h +
+        single.cas_eleve_nombre_h + single.cas_classique_nombre_f + single.cas_bsf_nombre_f + single.cas_cec_nombre_f
+        +single.cas_ndongo_daara_nombre_f +
+        single.cas_eleve_nombre_f }}</p>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- <div class="d-flex w-100 justify-content-between">
+        <button type="submit"
+                class="btn btn-lg d-flex align-items-center btn-primary"> Modifier <i class="fas  d-inline-block ml-2 fa-edit"></i>
+        </button>
+
+        <button type="button"
+                (click)="saveMutuelle()"
+                class="btn btn-lg d-flex align-items-center btn-primary">Valider <i class="fas  d-inline-block ml-2 fa-check"></i></button>
+      </div> -->
+
+</div>

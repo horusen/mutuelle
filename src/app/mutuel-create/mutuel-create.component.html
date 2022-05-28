@@ -23,7 +23,7 @@
                       <angular2-multiselect [data]="regionService.data"
                                             [settings]="dropdownSettings"
                                             formControlName="region"
-                                            class="form-control form-control-lg p-1 ">
+                                            class=" ">
                       </angular2-multiselect>
 
                     </div>
@@ -37,7 +37,7 @@
                                             [disabled]="form.get('structure.region')!.value == null"
                                             [settings]="dropdownSettings"
                                             formControlName="departement"
-                                            class="form-control form-control-lg p-1 ">
+                                            class=" ">
                       </angular2-multiselect>
                       <small id="emailHelp"
                              class="form-text text-muted">Choisir une région pour charger les départments</small>
@@ -56,7 +56,7 @@
                                             [disabled]="form.get('structure.departement')!.value == null"
                                             [settings]="dropdownSettings"
                                             formControlName="commune"
-                                            class="form-control form-control-lg p-1 ">
+                                            class=" ">
                       </angular2-multiselect>
                       <small id="emailHelp"
                              class="form-text text-muted">Choisir un departement pour charger les communes</small>
@@ -71,7 +71,7 @@
                                             [settings]="dropdownSettings"
                                             [disabled]="form.get('structure.commune')!.value == null"
                                             formControlName="mutuelle_de_sante"
-                                            class="form-control form-control-lg p-1 ">
+                                            class=" ">
                       </angular2-multiselect>
                       <small id="emailHelp"
                              class="form-text text-muted">Choisir une commune pour charger les structures</small>
@@ -89,7 +89,7 @@
                       <angular2-multiselect [data]="typeService.data"
                                             [settings]="dropdownSettings"
                                             formControlName="type"
-                                            class="form-control form-control-lg p-1 ">
+                                            class=" ">
                       </angular2-multiselect>
 
                     </div>

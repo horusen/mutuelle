@@ -1,0 +1,39 @@
+<div class="modal animated bounceInDown"
+     [id]="configuration.name"
+     tabindex="-1"
+     role="dialog"
+     data-backdrop="static"
+     data-keyboard="false"
+     [attr.aria-labelledby]="configuration.name + '-label'"
+     aria-hidden="true">
+  <div [class]="'modal-dialog modal-'+  (configuration.taille ? configuration.taille : 'lg')"
+       role=" document">
+    <div class="modal-content p-0">
+      <div class="modal-header ">
+        <h3 class="modal-title mb-0"
+            id="exampleModalLabel_5">
+          <i [class]="'fas fa-' + configuration.icone"
+             *ngIf="configuration.icone"></i>
+          {{ configuration.titre }}
+        </h3>
+        <button type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+                (click)="closed.emit()">
+          <span aria-hidden="true"><i class="fas fa-times"></i></span>
+        </button>
+      </div>
+      <div class="modal-body"
+           [ngStyle]="{
+                    'min-height': configuration.minHeight || 'auto',
+                    'min-width': configuration.minWidth || 'auto'
+                }">
+
+        <ng-content>
+
+        </ng-content>
+      </div>
+    </div>
+  </div>
+</div>

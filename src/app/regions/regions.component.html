@@ -1,0 +1,24 @@
+<div class="d-flex align-items-center justify-content-between">
+  <h5 class="my-3"><i class="fas fa-list"></i> Liste des régions</h5>
+  <button class="btn btn-sm btn-success"
+          [autoClose]="'outside'"
+          [ngbPopover]="regionCreateBody"
+          [popoverTitle]="regionCreateTitle"><i class="fas fa-plus"></i> Ajouter</button>
+
+</div>
+
+<app-regions-list (tableEvent)="onTableEvent($event)"></app-regions-list>
+
+
+<ng-template #regionCreateTitle>Ajouter une région</ng-template>
+<ng-template #regionCreateBody>
+  <app-regions-create></app-regions-create>
+</ng-template>
+
+
+
+
+<app-modal [configuration]="{ name: 'regions-edit-modal', titre: 'Modifier les details de la région', icone:'edit', taille: 'md' }"
+           (closed)="helper.navigation.deleteFragmentFromUrl()">
+  <app-regions-edit (edited)="onEdited()"></app-regions-edit>
+</app-modal>

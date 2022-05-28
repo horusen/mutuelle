@@ -1,0 +1,40 @@
+<form [formGroup]="form"
+      *ngIf="single"
+      (submit)="update()">
+  <div class="row">
+    <!-- Nombre homme -->
+    <div class="col-12">
+      <div class="form-group">
+        <label for="exampleInputEmail1">Libelle</label>
+        <input type="text"
+               formControlName="libelle"
+               class="form-control">
+      </div>
+    </div>
+
+    <!-- departement -->
+    <div class="col-12">
+      <div class="form-group">
+        <label for="exampleInputEmail1">Département</label>
+        <angular2-multiselect [data]="departementService.data"
+                              (click)="getDepartements()"
+                              [settings]="helper.dropdownSettings.single"
+                              formControlName="departement"
+                              class=" ">
+        </angular2-multiselect>
+
+      </div>
+    </div>
+
+
+    <div class="col-12 text-right">
+      <button class="btn btn-sm btn-success mr-1"
+              type="submit"
+              [disabled]="form.invalid">
+        <i class="fad fa-circle-notch fa-spin"
+           *ngIf="loading"></i>
+        Valider
+      </button>
+    </div>
+  </div>
+</form>

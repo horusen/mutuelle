@@ -1,0 +1,24 @@
+<div class="d-flex align-items-center justify-content-between">
+  <h5 class="my-3"><i class="fas fa-list"></i> Liste des types de mutuelles de sante</h5>
+  <button class="btn btn-sm btn-success"
+          [autoClose]="'outside'"
+          [ngbPopover]="typeMutuelleCreateBody"
+          [popoverTitle]="typeMutuelleCreateTitle"><i class="fas fa-plus"></i> Ajouter</button>
+
+</div>
+
+<app-type-mutuelles-list (tableEvent)="onTableEvent($event)"></app-type-mutuelles-list>
+
+
+<ng-template #typeMutuelleCreateTitle>Ajouter une mutuelle de santé</ng-template>
+<ng-template #typeMutuelleCreateBody>
+  <app-type-mutuelles-create></app-type-mutuelles-create>
+</ng-template>
+
+
+
+
+<app-modal [configuration]="{ name: 'type-mutuelles-edit-modal', titre: 'Modifier la mutuelle de santé', icone:'edit', taille: 'md' }"
+           (closed)="helper.navigation.deleteFragmentFromUrl()">
+  <app-type-mutuelles-edit (edited)="onEdited()"></app-type-mutuelles-edit>
+</app-modal>

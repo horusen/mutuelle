@@ -1,0 +1,24 @@
+<div class="d-flex align-items-center justify-content-between">
+  <h5 class="my-3"><i class="fas fa-list"></i> Liste des départements</h5>
+  <button class="btn btn-sm btn-success"
+          [routerLink]="['./']"
+          [fragment]="'add-departements'"><i class="fas fa-plus"></i> Ajouter</button>
+
+</div>
+
+<app-departements-list (tableEvent)="onTableEvent($event)"></app-departements-list>
+
+
+
+
+
+<app-modal [configuration]="{ name: 'departements-create-modal', titre: 'Ajouter un département', icone:'plus', taille: 'md' }"
+           (closed)="helper.navigation.deleteFragmentFromUrl()">
+  <app-departements-create (create)="onCreated()"></app-departements-create>
+</app-modal>
+
+
+<app-modal [configuration]="{ name: 'departements-edit-modal', titre: 'Modifier les details du département', icone:'edit', taille: 'md' }"
+           (closed)="helper.navigation.deleteFragmentFromUrl()">
+  <app-departements-edit (edited)="onEdited()"></app-departements-edit>
+</app-modal>

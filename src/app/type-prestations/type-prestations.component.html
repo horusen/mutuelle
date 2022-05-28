@@ -1,0 +1,24 @@
+<div class="d-flex align-items-center justify-content-between">
+  <h5 class="my-3"><i class="fas fa-list"></i> Liste des types de prestations</h5>
+  <button class="btn btn-sm btn-success"
+          [autoClose]="'outside'"
+          [ngbPopover]="typePrestationCreateBody"
+          [popoverTitle]="typePrestationCreateTitle"><i class="fas fa-plus"></i> Ajouter</button>
+
+</div>
+
+<app-type-prestations-list (tableEvent)="onTableEvent($event)"></app-type-prestations-list>
+
+
+<ng-template #typePrestationCreateTitle>Ajouter un type de prestation</ng-template>
+<ng-template #typePrestationCreateBody>
+  <app-type-prestations-create></app-type-prestations-create>
+</ng-template>
+
+
+
+
+<app-modal [configuration]="{ name: 'type-prestations-edit-modal', titre: 'Modifier les details du type de prestation', icone:'edit', taille: 'md' }"
+           (closed)="helper.navigation.deleteFragmentFromUrl()">
+  <app-type-prestations-edit (edited)="onEdited()"></app-type-prestations-edit>
+</app-modal>

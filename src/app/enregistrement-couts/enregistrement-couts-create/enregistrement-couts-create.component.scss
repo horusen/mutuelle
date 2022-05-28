@@ -1,0 +1,7 @@
+::ng-deep .c-btn {
+  min-height: none;
+  height: 48px !important;
+  &.disabled {
+    background-color: #eaecf4 !important;
+  }
+}

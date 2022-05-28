@@ -1,38 +1,35 @@
-import { LOCALE_ID, NgModule } from '@angular/core';
+import { Injector, LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MutuelCreateComponent } from './mutuel-create/mutuel-create.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
-import { ReactiveFormsModule } from '@angular/forms';
+
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { RecapitulatifComponent } from './recapitulatif/recapitulatif.component';
-import { MutuelleListComponent } from './mutuelle-list/mutuelle-list.component';
-import { MutuelShowComponent } from './mutuel-show/mutuel-show.component';
+
+import { AppInjector } from 'src/shared/injector/app-injector.service';
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SharedModule } from 'src/shared/shared.module';
 
 registerLocaleData(localeFr, 'fr');
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    MutuelCreateComponent,
-    DashboardComponent,
-    RecapitulatifComponent,
-    MutuelleListComponent,
-    MutuelShowComponent,
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AngularMultiSelectModule,
-    ReactiveFormsModule,
+    HttpClientModule,
     NgbModule,
+    SharedModule,
+    BrowserAnimationsModule,
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'fr' }],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule {
+  constructor(injector: Injector) {
+    AppInjector.injector = injector;
+  }
+}

@@ -1,0 +1,164 @@
+<div id="wrapper">
+
+  <!-- Sidebar -->
+  <ul class="navbar-nav bg-gradient-success sidebar sidebar-dark accordion"
+      id="accordionSidebar">
+
+    <!-- Sidebar - Brand -->
+    <a class="sidebar-brand mb-5 d-flex align-items-center justify-content-center"
+       href="index.html">
+      <div class="sidebar-brand-icon rotate-n-15">
+        <i class="fas fa-school"></i>
+      </div>
+      <div class="sidebar-brand-text mx-3">UNAMUSC</div>
+    </a>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider ">
+
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item active">
+      <a class="nav-link"
+         href="index.html">
+        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <span>Dashboard</span></a>
+    </li>
+
+
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item active">
+      <a class="nav-link"
+         [routerLink]="['mutuelles']">
+        <i class="fas fa-fw fa-school"></i>
+        <span>Mutuelles de santé</span></a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item active">
+      <a class="nav-link"
+         [routerLink]="['enregistrement-couts']">
+        <i class="fas fa-fw fa-money-check-alt"></i>
+        <span>Enregistrements coûts</span></a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item active">
+      <a class="nav-link w-100"
+         [routerLink]="['enregistrement-prestations']">
+        <i class="fas fa-fw fa-user-md"></i>
+        <span>Enregistrements prestations</span></a>
+    </li>
+
+
+
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item active">
+      <a class="nav-link"
+         [routerLink]="['create']">
+        <i class="fas fa-fw fa-plus"></i>
+        <span>Ajouter</span></a>
+    </li>
+
+
+
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item active">
+      <a class="nav-link"
+         [routerLink]="['list']">
+        <i class="fas fa-fw fa-list"></i>
+        <span>Voir la liste</span></a>
+    </li>
+
+
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item active">
+      <a class="nav-link"
+         [routerLinkActive]="'active'"
+         [routerLink]="['configurations']">
+        <i class="fas fa-fw fa-cog"></i>
+        <span>Configuration</span></a>
+    </li>
+
+
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+
+
+  </ul>
+  <!-- End of Sidebar -->
+
+  <!-- Content Wrapper -->
+  <div id="content-wrapper"
+       class="d-flex flex-column">
+
+    <!-- Main Content -->
+    <div id="content">
+
+      <!-- Topbar -->
+      <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+
+
+        <!-- Topbar Search -->
+        <!-- <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+          <div class="input-group">
+            <input type="text"
+                   class="form-control bg-light border-0 small"
+                   placeholder="Search for..."
+                   aria-label="Search"
+                   aria-describedby="basic-addon2">
+            <div class="input-group-append">
+              <button class="btn btn-primary"
+                      type="button">
+                <i class="fas fa-search fa-sm"></i>
+              </button>
+            </div>
+          </div>
+        </form> -->
+
+        <!-- Topbar Navbar -->
+
+
+      </nav>
+      <!-- End of Topbar -->
+
+      <!-- Begin Page Content -->
+      <div class="container-fluid">
+
+        <router-outlet></router-outlet>
+        <!-- /.container-fluid -->
+
+      </div>
+      <!-- End of Main Content -->
+
+
+
+    </div>
+    <!-- End of Content Wrapper -->
+
+  </div>

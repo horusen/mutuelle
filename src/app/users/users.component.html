@@ -1,0 +1,24 @@
+<div class="d-flex align-items-center justify-content-between">
+  <h5 class="my-3"><i class="fas fa-list"></i> Liste des utilisateurs</h5>
+  <a class="btn btn-sm btn-success"
+     [routerLink]="['./']"
+     [fragment]="'add-users'"><i class="fas fa-plus"></i> Ajouter</a>
+
+</div>
+
+<app-users-list (tableEvent)="onTableEvent($event)"></app-users-list>
+
+
+
+
+
+<app-modal [configuration]="{ name: 'users-create-modal', titre: 'Ajouter un nouvel utilisateur' , icone:'edit', taille: 'md' }"
+           (closed)="helper.navigation.deleteFragmentFromUrl()">
+  <app-users-create (created)="onCreated()"></app-users-create>
+</app-modal>
+
+
+<app-modal [configuration]="{ name: 'users-edit-modal', titre: 'Modifier les details de l\'utilisateur' , icone:'edit', taille: 'md' }"
+           (closed)="helper.navigation.deleteFragmentFromUrl()">
+  <app-users-edit (edited)="onEdited()"></app-users-edit>
+</app-modal>

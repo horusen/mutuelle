@@ -1,0 +1,44 @@
+<div class="card"
+     class="mat-elevation-z3 bg-white">
+  <div class="card-header"><i class="fas fa-cog"></i> Configurations</div>
+  <div class="card-body">
+    <ul class="nav nav-pills">
+      <li class="nav-item">
+        <a class="nav-link"
+           routerLink="regions"
+           routerLinkActive="active">Régions</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link"
+           routerLink="departements"
+           routerLinkActive="active">Département</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link"
+           routerLink="communes"
+           routerLinkActive="active">Communes</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link"
+           routerLink="type-mutuelles"
+           routerLinkActive="active">Type de mutuelles de santé</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link"
+           routerLink="type-prestations"
+           routerLinkActive="active">Type de préstation</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link"
+           routerLink="utilisateurs"
+           routerLinkActive="active">Utilisateurs</a>
+      </li>
+
+    </ul>
+
+    <div class="mt-2">
+      <router-outlet></router-outlet>
+    </div>
+
+  </div>
+</div>

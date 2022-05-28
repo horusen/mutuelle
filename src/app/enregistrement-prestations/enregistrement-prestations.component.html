@@ -1,0 +1,45 @@
+<div class="card"
+     class="mat-elevation-z3 bg-white">
+  <div class="card-header"><i class="fas fa-user-md"></i> Enregistrement prestations</div>
+  <div class="card-body">
+
+
+    <div class="d-flex align-items-center justify-content-between">
+      <h5 class="my-3"><i class="fas fa-list"></i> Liste des enregistrements</h5>
+      <button class="btn btn-sm btn-success"
+              [routerLink]="['./']"
+              [fragment]="'add-enregistrement-prestations'"><i class="fas fa-plus"></i> Ajouter</button>
+
+    </div>
+    <div class="scroll-11">
+      <div class="smart-table-container"
+           style="width: 1700px;">
+        <app-enregistrement-prestations-list (tableEvent)="onTableEvent($event)"></app-enregistrement-prestations-list>
+      </div>
+    </div>
+
+
+
+
+
+
+
+    <app-modal [configuration]="{ name: 'enregistrement-prestations-create-modal', titre: 'Ajouter un nouvel enregistrement', icone:'plus', taille: 'lg' }"
+               (closed)="helper.navigation.deleteFragmentFromUrl()">
+      <app-enregistrement-prestations-create (create)="onCreated()"></app-enregistrement-prestations-create>
+    </app-modal>
+
+    <app-modal [configuration]="{ name: 'enregistrement-prestations-show-modal', titre: 'Voir les détails de l\'enregistrement', icone:'plus', taille: 'lg' }"
+               (closed)="helper.navigation.deleteFragmentFromUrl()">
+      <router-outlet></router-outlet>
+    </app-modal>
+
+
+    <app-modal [configuration]="{ name: 'enregistrement-prestations-edit-modal', titre: 'Modifier les details de l\'enregistrement', icone:'edit', taille: 'lg' }"
+               (closed)="helper.navigation.deleteFragmentFromUrl()">
+      <app-enregistrement-prestations-edit (edited)="onEdited()"></app-enregistrement-prestations-edit>
+    </app-modal>
+
+
+  </div>
+</div>
