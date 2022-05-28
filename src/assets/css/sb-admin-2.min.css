@@ -9605,7 +9605,7 @@ a:focus {
 }
 @media (min-width: 768px) {
   .sidebar {
-    width: 17rem !important;
+    width: 18rem !important;
   }
   .sidebar .nav-item .collapse {
     position: relative;
@@ -9776,10 +9776,10 @@ a:focus {
   color: rgba(255, 255, 255, 0.4);
 }
 .sidebar-dark .nav-item .nav-link {
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 1);
 }
 .sidebar-dark .nav-item .nav-link i {
-  color: rgba(255, 255, 255, 0.3);
+  color: rgba(255, 255, 255, 0.8);
 }
 .sidebar-dark .nav-item .nav-link:active,
 .sidebar-dark .nav-item .nav-link:focus,

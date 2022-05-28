@@ -25,7 +25,7 @@ export class EnregistrementBeneficiairesComponent
     if (event.action == 'edit') {
       this.modifer(event.data);
       this.router.navigate(['./'], {
-        fragment: 'edit-enregistrement-couts',
+        fragment: 'edit-enregistrement-beneficiaires',
         relativeTo: this.route,
         queryParamsHandling: 'preserve',
       });
@@ -33,6 +33,7 @@ export class EnregistrementBeneficiairesComponent
       this.supprimer(event.data);
     } else if (event.action == 'show') {
       this.router.navigate([event.data.id], { relativeTo: this.route });
+      this.helper.modal.show('enregistrement-beneficiaires-show-modal');
     }
   }
 

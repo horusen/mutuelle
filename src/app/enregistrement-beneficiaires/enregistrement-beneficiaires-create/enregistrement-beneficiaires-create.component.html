@@ -1,1 +1,217 @@
-<p>enregistrement-beneficiaires-create works!</p>
+<form [formGroup]="form"
+      (submit)="create()">
+  <ul ngbNav
+      #nav="ngbNav"
+      [(activeId)]="active"
+      (navChange)="changeNav($event)"
+      class="nav-pills">
+
+    <li [ngbNavItem]="'structure'">
+      <a ngbNavLink>Structure</a>
+      <ng-template ngbNavContent>
+        <div [formGroupName]="'structure'">
+          <!-- Region et department -->
+          <div class="row">
+            <!-- region -->
+            <div class="col-6">
+              <div class="form-group">
+                <label for="exampleInputEmail1">Région <i class="fad fa-spinner fa-spin ml-2"
+                     *ngIf="dependanciesLoading.regions"></i></label>
+                <angular2-multiselect [data]="dependancies.regions"
+                                      (click)="getRegions()"
+                                      [settings]="helper.dropdownSettings.single"
+                                      formControlName="region"
+                                      class=" ">
+                </angular2-multiselect>
+
+              </div>
+            </div>
+
+            <!-- Departement -->
+            <div class="col-6">
+              <div class="form-group">
+                <label for="exampleInputEmail1">Département<i class="fad fa-spinner fa-spin ml-2"
+                     *ngIf="dependanciesLoading.departements"></i></label>
+                <angular2-multiselect [data]="dependancies.departements"
+                                      [settings]="form.get('structure.region')!.value == null ? helper.dropdownSettings.singleDisabled : helper.dropdownSettings.single"
+                                      formControlName="departement"
+                                      class=" ">
+                </angular2-multiselect>
+                <small id="emailHelp"
+                       class="form-text text-muted">Choisir une région pour charger les départments</small>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- COmmune et structure -->
+          <div class="row">
+            <!-- Commune -->
+            <div class="col-6">
+              <div class="form-group">
+                <label for="exampleInputEmail1">Commune <i class="fad fa-spinner fa-spin ml-2"
+                     *ngIf="dependanciesLoading.communes"></i></label>
+                <angular2-multiselect [data]="dependancies.communes"
+                                      [settings]="form.get('structure.departement')!.value == null ? helper.dropdownSettings.singleDisabled : helper.dropdownSettings.single"
+                                      formControlName="commune"
+                                      class=" ">
+                </angular2-multiselect>
+                <small id="emailHelp"
+                       class="form-text text-muted">Choisir un departement pour charger les communes</small>
+              </div>
+            </div>
+
+            <!-- Commune -->
+            <div class="col-6">
+              <div class="form-group">
+                <label for="yeah">Type <i class="fad fa-spinner fa-spin ml-2"
+                     *ngIf="dependanciesLoading.types"></i></label>
+                <angular2-multiselect [data]="dependancies.types"
+                                      (click)="getTypes()"
+                                      [settings]="helper.dropdownSettings.single"
+                                      formControlName="type"
+                                      class=" ">
+                </angular2-multiselect>
+
+              </div>
+            </div>
+
+
+
+          </div>
+
+          <!-- type et date -->
+          <div class="row">
+            <!-- Structure -->
+            <div class="col-6">
+              <div class="form-group">
+                <label for="exampleInputEmail1">Mutuelle de santé <i class="fad fa-spinner fa-spin ml-2"
+                     *ngIf="dependanciesLoading.mutuelles"></i></label>
+                <angular2-multiselect [data]="dependancies.mutuelles"
+                                      [settings]="form.get('structure.commune')!.value == null || form.get('structure.type')!.value == null ? helper.dropdownSettings.singleDisabled : helper.dropdownSettings.single"
+                                      formControlName="mutuelle_de_sante"
+                                      class=" ">
+                </angular2-multiselect>
+                <small id="emailHelp"
+                       class="form-text text-muted">Choisir une commune et un type pour charger les mutuelles de santés</small>
+              </div>
+            </div>
+
+            <!-- date -->
+            <div class="col-6">
+              <div class="form-group">
+                <label for="exampleInputEmail1">Date</label>
+                <div class="input-group">
+                  <input class="form-control form-control-lg"
+                         placeholder="yyyy-mm-dd"
+                         formControlName="date"
+                         name="dp"
+                         (click)="d.toggle()"
+                         ngbDatepicker
+                         #d="ngbDatepicker">
+                  <button class="btn btn-outline-secondary calendar"
+                          (click)="d.toggle()"
+                          type="button">
+                    <i class="fas fa-calendar-alt"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+
+          <div class="d-flex w-100 justify-content-end">
+            <button type="button"
+                    class="btn  d-flex align-items-center btn-success"
+                    (click)="active = 'beneficiaire'">Suivant <i class="fas  d-inline-block ml-2 fa-caret-right"></i></button>
+          </div>
+        </div>
+      </ng-template>
+    </li>
+
+    <li [ngbNavItem]="'beneficiaire'">
+      <a ngbNavLink>Bénéfiaciaire</a>
+      <ng-template ngbNavContent>
+        <div formGroupName="beneficiaire">
+          <!-- Nombre d'adherent et de beneficiaire -->
+          <div class="row">
+            <!-- Nombre d'adherent -->
+            <div class="col-6">
+              <div class="form-group">
+                <label for="exampleInputEmail1">Nombre d'adherent</label>
+                <input type="number"
+                       formControlName="nombre_adherent"
+                       class="form-control form-control-lg"
+                       id="exampleInputEmail1"
+                       aria-describedby="emailHelp">
+              </div>
+            </div>
+
+            <!-- Nombre de beneficiaire -->
+            <div class="col-6">
+              <div class="form-group">
+                <label for="exampleInputEmail1">Nombre de bénéficiaire</label>
+                <input type="number"
+                       formControlName="nombre_beneficiaire"
+                       class="form-control form-control-lg"
+                       id="exampleInputEmail1"
+                       aria-describedby="emailHelp">
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Nombre de beneficiaire à jour et dette à l'etat -->
+          <div class="row">
+            <!-- Nombre de beneficiaire à jour -->
+            <div class="col-6">
+              <div class="form-group">
+                <label for="exampleInputEmail1">Nombre de bénéficiaire à jour</label>
+                <input type="number"
+                       formControlName="nombre_beneficiaire_a_jour"
+                       class="form-control form-control-lg"
+                       id="exampleInputEmail1"
+                       aria-describedby="emailHelp">
+              </div>
+            </div>
+
+            <!-- Dette de l'etat -->
+            <div class="col-6">
+              <div class="form-group">
+                <label for="exampleInputEmail1">Dette de l'etat</label>
+                <input type="number"
+                       formControlName="dette_etat"
+                       class="form-control form-control-lg"
+                       id="exampleInputEmail1"
+                       aria-describedby="emailHelp">
+              </div>
+            </div>
+
+          </div>
+
+
+          <div class="d-flex w-100 justify-content-between">
+            <button type="button"
+                    (click)="active = 'structure'"
+                    class="btn  d-flex align-items-center btn-success"><i class="fas  d-inline-block mr-2 fa-caret-left"></i> Precedent
+            </button>
+
+            <button type="submit"
+                    class="btn  d-flex align-items-center btn-success"
+                    [disabled]="form.invalid">
+              <i class="fad fa-circle-notch fa-spin"
+                 *ngIf="loading"></i>
+              Valider
+            </button>
+          </div>
+        </div>
+      </ng-template>
+    </li>
+  </ul>
+
+
+  <div [ngbNavOutlet]="nav"
+       class="mt-3"></div>
+
+</form>

@@ -35,7 +35,9 @@ export class EnregistrementBeneficiairesCreateComponent
     );
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.initialiseForm();
+  }
 
   initialiseForm(enregistrement?: any) {
     let date = new Date();
@@ -76,9 +78,7 @@ export class EnregistrementBeneficiairesCreateComponent
       }),
 
       beneficiaire: this.fb.group({
-        nombre_adhrerent: [
-          enregistrement ? enregistrement.nombre_adhrerent : 0,
-        ],
+        nombre_adherent: [enregistrement ? enregistrement.nombre_adherent : 0],
         nombre_beneficiaire: [
           enregistrement ? enregistrement.nombre_beneficiaire : 0,
         ],

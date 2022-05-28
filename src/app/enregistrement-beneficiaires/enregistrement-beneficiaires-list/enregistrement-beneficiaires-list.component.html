@@ -1,1 +1,4 @@
-<p>enregistrement-beneficiaires-list works!</p>
+<ng2-smart-table [settings]="tableConfiguration"
+                 (custom)="onCustomTriggered($event)"
+                 [source]="tableDataSource">
+</ng2-smart-table>

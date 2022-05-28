@@ -1,1 +1,73 @@
-<p>enregistrement-beneficiaires-show works!</p>
+<div *ngIf="single">
+  <!-- Structure -->
+  <h6 class="text-dark font-weight-bolder">Structure</h6>
+  <div class="row mb-3">
+    <div class="col-4">
+      <p class=" mb-0 text-primary">Région</p>
+      <p class="tx-light">{{ single.region.libelle }}</p>
+    </div>
+    <div class="col-4">
+      <p class=" mb-0 text-primary">Département</p>
+      <p class="tx-light">{{ single.departement.libelle }}</p>
+    </div>
+    <div class="col-4">
+      <p class=" mb-0 text-primary">Commune</p>
+      <p class="tx-light">{{ single.commune.libelle }}</p>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col-4">
+      <p class=" mb-0 text-primary">Structure</p>
+      <p class="tx-light">{{ single.mutuelle.libelle }}</p>
+    </div>
+    <div class="col-4">
+      <p class=" mb-0 text-primary">Type</p>
+      <p class="tx-light">{{ single.type.libelle }}</p>
+    </div>
+    <div class="col-4">
+      <p class=" mb-0 text-primary">Date</p>
+      <p class="tx-light">{{ date.getDay() +'/'+date.getMonth() +'/'+date.getFullYear() }}</p>
+    </div>
+  </div>
+  <hr>
+
+  <!-- Cas classique -->
+  <h6 class="text-dark font-weight-bolder">Cas classique</h6>
+  <div class="row mb-3">
+    <div class="col-4">
+      <p class=" mb-0 text-primary">Nombre d'adherent</p>
+      <p class="tx-light">{{ single.nombre_adherent }}</p>
+    </div>
+    <div class="col-4">
+      <p class=" mb-0 text-primary">Nombre de bénéficiaire</p>
+      <p class="tx-light">{{ single.nombre_beneficiaire }}</p>
+    </div>
+    <div class="col-4">
+      <p class=" mb-0 text-primary">Nombre de bénéficiaire à jour</p>
+      <p class="tx-light">{{ single.nombre_beneficiaire_a_jour}}</p>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col-4">
+      <p class=" mb-0 text-primary">Dette de l'etat</p>
+      <p class="tx-light">{{ helper.text.moneyFormat(single.dette_etat) }}</p>
+    </div>
+
+  </div>
+  <hr>
+
+
+
+
+
+  <!-- <div class="d-flex w-100 justify-content-between">
+        <button type="submit"
+                class="btn btn-lg d-flex align-items-center btn-primary"> Modifier <i class="fas  d-inline-block ml-2 fa-edit"></i>
+        </button>
+
+        <button type="button"
+                (click)="saveMutuelle()"
+                class="btn btn-lg d-flex align-items-center btn-primary">Valider <i class="fas  d-inline-block ml-2 fa-check"></i></button>
+      </div> -->
+
+</div>

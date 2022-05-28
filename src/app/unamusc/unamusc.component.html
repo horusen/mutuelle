@@ -17,7 +17,7 @@
     <hr class="sidebar-divider ">
 
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item active">
+    <li class="nav-item ">
       <a class="nav-link"
          href="index.html">
         <i class="fas fa-fw fa-tachometer-alt"></i>
@@ -30,7 +30,8 @@
     <hr class="sidebar-divider">
 
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item active">
+    <li class="nav-item "
+        [routerLinkActive]="'active'">
       <a class="nav-link"
          [routerLink]="['mutuelles']">
         <i class="fas fa-fw fa-school"></i>
@@ -41,7 +42,8 @@
     <hr class="sidebar-divider">
 
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item active">
+    <li class="nav-item "
+        [routerLinkActive]="'active'">
       <a class="nav-link"
          [routerLink]="['enregistrement-couts']">
         <i class="fas fa-fw fa-money-check-alt"></i>
@@ -52,41 +54,33 @@
     <hr class="sidebar-divider">
 
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item active">
+    <li class="nav-item "
+        [routerLinkActive]="'active'">
       <a class="nav-link w-100"
          [routerLink]="['enregistrement-prestations']">
         <i class="fas fa-fw fa-user-md"></i>
         <span>Enregistrements prestations</span></a>
     </li>
 
-
-
-
     <!-- Divider -->
     <hr class="sidebar-divider">
 
-
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item active">
-      <a class="nav-link"
-         [routerLink]="['create']">
-        <i class="fas fa-fw fa-plus"></i>
-        <span>Ajouter</span></a>
+    <li class="nav-item"
+        [routerLinkActive]="'active'">
+      <a class="nav-link w-100"
+         [routerLink]="['enregistrement-beneficiaires']">
+        <i class="fas fa-fw fa-users"></i>
+        <span>Enregistrements bénéficiaires</span></a>
     </li>
 
 
 
 
-    <!-- Divider -->
-    <hr class="sidebar-divider">
 
-    <!-- Nav Item - Dashboard -->
-    <li class="nav-item active">
-      <a class="nav-link"
-         [routerLink]="['list']">
-        <i class="fas fa-fw fa-list"></i>
-        <span>Voir la liste</span></a>
-    </li>
+
+
+
 
 
 
@@ -94,7 +88,7 @@
     <hr class="sidebar-divider">
 
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item active">
+    <li class="nav-item ">
       <a class="nav-link"
          [routerLinkActive]="'active'"
          [routerLink]="['configurations']">

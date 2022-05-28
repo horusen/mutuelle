@@ -35,7 +35,13 @@ const routes: Routes = [
             './../enregistrement-prestations/enregistrement-prestations.module'
           ).then((module) => module.EnregistrementPrestationsModule),
       },
-
+      {
+        path: 'enregistrement-beneficiaires',
+        loadChildren: () =>
+          import(
+            './../enregistrement-beneficiaires/enregistrement-beneficiaires.module'
+          ).then((module) => module.EnregistrementBeneficiairesModule),
+      },
       {
         path: 'configurations',
         loadChildren: () =>

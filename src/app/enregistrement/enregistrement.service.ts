@@ -1,23 +1,23 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { BaseService } from 'src/shared/services/base.service';
-import { EnregistrementBeneficiaire } from './enregistrement-beneficiaires.model';
-import { Mutuelle } from './../mutuelles/mutuelles.model';
-import { Commune } from './../communes/commune.model';
-import { Departement } from './../departements/departement.model';
-import { Region } from './../regions/region.model';
-import { ApiResponse } from './../../shared/models/ApiResponse';
+import { Commune } from '../communes/commune.model';
+import { Departement } from '../departements/departement.model';
+import { Mutuelle } from '../mutuelles/mutuelles.model';
+import { Region } from '../regions/region.model';
+import { Enregistrement } from './enregistrement.model';
 import { Params } from '@angular/router';
 import { tap, map } from 'rxjs/operators';
+import { ApiResponse } from './../../shared/models/ApiResponse';
 
 @Injectable({
   providedIn: 'root',
 })
-export class EnregistrementBeneficiairesService extends BaseService<EnregistrementBeneficiaire> {
-  constructor() {
-    super('enregistrement-beneficiaires');
+export class EnregistrementService extends BaseService<Enregistrement> {
+  constructor(@Inject('string') public endPoint: string) {
+    super(endPoint);
   }
 
-  private transformData(enregistrement: EnregistrementBeneficiaire) {
+  private transformData(enregistrement: Enregistrement) {
     let mutuelle = enregistrement.mutuelle as Mutuelle;
     let commune = mutuelle.commune as Commune;
     let departement = commune.departement as Departement;
@@ -38,7 +38,7 @@ export class EnregistrementBeneficiairesService extends BaseService<Enregistreme
     return this.factory
       .get(`${this.endPoint}`, { params: options?.params })
       .pipe(
-        tap((response: ApiResponse<EnregistrementBeneficiaire>) => {
+        tap((response: ApiResponse<Enregistrement>) => {
           this.data = response.data.map((enregistrement: any) =>
             this.transformData(enregistrement)
           );
