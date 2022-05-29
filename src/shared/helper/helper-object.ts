@@ -15,6 +15,12 @@ export class HelperObject {
     return newObject;
   }
 
+  getSubset(object: any, keys: string[]) {
+    return (({ ...keys }) => ({
+      ...keys,
+    }))(object);
+  }
+
   serialize(object: {}) {
     return this.omitEmptyArrays(this.omitNullValue(object));
   }

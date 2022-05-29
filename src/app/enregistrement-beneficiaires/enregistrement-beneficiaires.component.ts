@@ -37,6 +37,45 @@ export class EnregistrementBeneficiairesComponent
     }
   }
 
+  onParsedDataFromCsv(data: any) {
+    let enregistrements = this.parseToEnregistrementBeneficiaire(data);
+    this.enregistrementService
+      .storeBulk(enregistrements)
+      .subscribe((response) => {
+        this.helper.notification.alertSuccess();
+        setTimeout(() => {
+          this.helper.notification.toastSuccess(
+            `${response.length} élément(s) sur ${enregistrements.length} ont été enregistré avec succés!`
+          );
+        }, 1500);
+      });
+  }
+
+  parseToEnregistrementBeneficiaire(items: any[]) {
+    let preEnregistrement: EnregistrementBeneficiaire[] = [];
+
+    items.forEach((item) => {
+      let newItem = this.helper.text.serializeObjectPropertyKey(item);
+      preEnregistrement.push(newItem);
+    });
+
+    const enregistrements = preEnregistrement.map((enregistrement) => {
+      return this.helper.object.getSubset(enregistrement, [
+        'region',
+        'date',
+        'departement',
+        'commune',
+        'mutuelle',
+        'nombre_adherent',
+        'nombre_beneficiaire',
+        'nombre_beneficiaire_a_jour',
+        'dette_etat',
+      ]);
+    });
+
+    return enregistrements;
+  }
+
   modifer(enregistrement: EnregistrementBeneficiaire) {
     this.enregistrementService.singleData = enregistrement;
   }

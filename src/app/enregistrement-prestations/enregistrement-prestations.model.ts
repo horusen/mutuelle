@@ -1,5 +1,6 @@
 import { BaseModel } from 'src/shared/models/BaseModel';
 import { Mutuelle } from '../mutuelles/mutuelles.model';
+import { TypePrestation } from './../type-prestations/type-prestations.model';
 
 export interface EnregistrementPrestation extends BaseModel {
   date: string;
@@ -14,4 +15,5 @@ export interface EnregistrementPrestation extends BaseModel {
   cas_eleve_f: string;
   cas_ndongo_daara_h: string;
   cas_ndongo_daara_f: string;
+  type_prestation: TypePrestation | number;
 }

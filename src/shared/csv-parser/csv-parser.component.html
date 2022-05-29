@@ -1,0 +1,7 @@
+<button class="btn btn-sm btn-secondary mr-2"
+        (click)="csvFile.click()"><i class="fas fa-file-csv"></i> Importer CSV</button>
+<input type="file"
+       [hidden]="true"
+       #csvFile
+       accept=".csv"
+       (change)="onCsvUploaded($event)">

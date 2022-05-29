@@ -43,6 +43,20 @@ export class HelperText {
     }
   }
 
+  private serializeString = (item: string) => {
+    return item.toLocaleLowerCase().replace(' ', '_');
+  };
+
+  serializeObjectPropertyKey(object: any) {
+    const renamedObject: any = {};
+
+    Object.keys(object).forEach((key) => {
+      renamedObject[`${this.serializeString(key)}`] = object[key];
+    });
+
+    return renamedObject;
+  }
+
   addPrefixToObjectPropertyKey(object: any, prefix: string) {
     const renamedObject: any = {};
 

@@ -10,6 +10,7 @@ import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
 import { LoadingModule } from './loading/loading.module';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { ModalModule } from './modal/modal.module';
+import { CsvParserModule } from 'src/shared/csv-parser/csv-parser.module';
 
 @NgModule({
   declarations: [],
@@ -23,6 +24,7 @@ import { ModalModule } from './modal/modal.module';
     NgbPopoverModule,
     ModalModule,
     NgbModule,
+    CsvParserModule,
   ],
   exports: [
     LoadingModule,
@@ -34,6 +36,7 @@ import { ModalModule } from './modal/modal.module';
     NgbPopoverModule,
     ModalModule,
     NgbModule,
+    CsvParserModule,
   ],
 })
 export class SharedModule {}

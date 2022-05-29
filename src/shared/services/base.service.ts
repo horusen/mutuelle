@@ -109,6 +109,19 @@ export abstract class BaseService<T = any> {
     return this.factory.get(`file/${fileID}/download`);
   }
 
+  storeBulk(elements: object[]) {
+    return this.factory.post(`${this.endPoint}/bulk`, elements).pipe(
+      tap({
+        next: (response: any[]) => {
+          this.unshiftItemInData(response);
+        },
+        error: (error) => {
+          this.errorResponseHandler(error);
+        },
+      })
+    );
+  }
+
   store(elements: object) {
     return this.factory.post(this.endPoint, elements).pipe(
       tap({
