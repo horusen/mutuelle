@@ -1,7 +1,13 @@
 <div class="container">
 
+  <p class="text-center">
+    <img src="assets/img/unamusc.PNG"
+         class="logo"
+         alt="">
+  </p>
   <div class="card o-hidden  border-0 shadow-lg "
-       style="margin-top: 180px;">
+       *ngIf="single"
+       style="margin-top: 40px;">
     <div class="card-body p-0">
       <!-- Nested Row within Card Body -->
       <div class="row">
@@ -50,7 +56,7 @@
                          placeholder="Confirmer votre mot de passe">
                 </div>
               </div>
-              <button class="btn btn-primary btn-user btn-block">
+              <button class="btn btn-success btn-user btn-block">
                 Terminer l'enregistrement
               </button>
               <hr>
