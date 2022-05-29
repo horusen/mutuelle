@@ -1,9 +1,26 @@
 import { Injectable } from '@angular/core';
+import { AngularCsv } from 'angular-csv-ext/dist/Angular-csv';
 
 @Injectable({
   providedIn: 'root',
 })
 export class helperArrayObject {
+  downloadAsCsv(name: string, array: any[], headers: string[], options?: any) {
+    let opt = {
+      fieldSeparator: ';',
+      quoteStrings: '',
+      decimalseparator: ',',
+      // showLabels: true,
+      showTitle: false,
+      useBom: true,
+      headers: [...headers],
+      // useHeader: true,
+      nullToEmptyString: true,
+      ...options,
+    };
+    new AngularCsv(array, name, opt);
+  }
+
   find(array: any[], id: number, libelleID: string = 'id') {
     return array.find((item) => item[libelleID] == id);
   }

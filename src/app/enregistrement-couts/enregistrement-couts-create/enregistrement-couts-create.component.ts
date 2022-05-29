@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { CommuneService } from 'src/app/communes/commune.service';
 import { DepartementService } from 'src/app/departements/departement.service';
 import { RegionService } from 'src/app/regions/region.service';
 import { TypeMutuellesService } from 'src/app/type-mutuelles/type-mutuelles.service';
-import { BaseCreateComponent } from 'src/shared/base-component/base-create.component';
 import { EnregistrementCoutsService } from '../enregistrement-couts.service';
 
 import { MutuellesService } from './../../mutuelles.service';

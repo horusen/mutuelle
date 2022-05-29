@@ -37,6 +37,26 @@ export class EnregistrementBeneficiairesComponent
     }
   }
 
+  downloadDataAsCsv() {
+    let name = `${Date.now().toString()}-enrgistement-beneficiaire`;
+    this.helper.arrayObject.downloadAsCsv(
+      name,
+      this.enregistrementService.prepareDataForCsvExporting(),
+      [
+        'REGION',
+        'DEPARTEMENT',
+        'COMMUNE',
+        'MUTUELLE',
+        'TYPE MUTUELLE',
+        'DATE',
+        'NOMBRE ADHERENT ',
+        'NOMBRE BENEFICIAIRE',
+        'NOMBRE BENEFICIAIRE A JOUR',
+        'DETTE ETAT',
+      ]
+    );
+  }
+
   onParsedDataFromCsv(data: any) {
     let enregistrements = this.parseToEnregistrementBeneficiaire(data);
     this.enregistrementService

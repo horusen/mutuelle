@@ -43,6 +43,7 @@ export class EnregistrementPrestationsCreateComponent
     super.ngOnInit();
     this.dependancies['typePrestations'] = [];
     this.dependanciesLoading['typePrestations'] = false;
+    this.initialiseForm();
   }
 
   initialiseForm(enregistrement?: any) {

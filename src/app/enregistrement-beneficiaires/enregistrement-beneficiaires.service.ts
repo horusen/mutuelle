@@ -8,6 +8,7 @@ import { Region } from './../regions/region.model';
 import { ApiResponse } from './../../shared/models/ApiResponse';
 import { Params } from '@angular/router';
 import { tap, map } from 'rxjs/operators';
+import { TypeMutuelle } from './../type-mutuelles/type-mutuelles.model';
 
 @Injectable({
   providedIn: 'root',
@@ -22,7 +23,7 @@ export class EnregistrementBeneficiairesService extends BaseService<Enregistreme
     let commune = mutuelle.commune as Commune;
     let departement = commune.departement as Departement;
     let region = departement.region as Region;
-    let type = mutuelle.type;
+    let type = mutuelle.type as TypeMutuelle;
 
     return {
       ...enregistrement,
@@ -57,5 +58,20 @@ export class EnregistrementBeneficiairesService extends BaseService<Enregistreme
       }),
       map((single) => this.transformData(single))
     );
+  }
+
+  prepareDataForCsvExporting() {
+    return this.data.map((enregistrement) => ({
+      region: enregistrement.region?.libelle,
+      departement: enregistrement.departement?.libelle,
+      commune: enregistrement.commune?.libelle,
+      mutuelle: (enregistrement.mutuelle as Mutuelle).libelle,
+      type_mutuelle: enregistrement.type?.libelle,
+      date: enregistrement.date?.toString().split('T')[0],
+      nombre_adherent: enregistrement.nombre_adherent,
+      nombre_beneficiaire: enregistrement.nombre_beneficiaire,
+      nombre_beneficiaire_a_jour: enregistrement.nombre_beneficiaire_a_jour,
+      dette_etat: enregistrement.dette_etat,
+    }));
   }
 }

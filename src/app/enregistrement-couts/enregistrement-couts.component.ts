@@ -36,6 +36,59 @@ export class EnregistrementCoutsComponent
     }
   }
 
+  downloadDataAsCsv() {
+    let name = `${Date.now().toString()}-enrgistement-beneficiaire`;
+
+    this.helper.arrayObject.downloadAsCsv(
+      name,
+      this.enregistrementService.prepareDataForCsvExporting(),
+      [
+        'REGION',
+        'DEPARTEMENT',
+        'COMMUNE',
+        'MUTUELLE',
+        'TYPE MUTUELLE',
+        'DATE',
+        'NOMBRE CAS CLASSIQUE H',
+        'NOMBRE CAS CLASSIQUE F',
+        'NOMBRE CAS CLASSIQUE TOTAL',
+        'COUT CAS CLASSIQUE H',
+        'COUT CAS CLASSIQUE F',
+        'COUT CAS CLASSIQUE TOTAL',
+        'NOMBRE CAS BSF H',
+        'NOMBRE CAS BSF F',
+        'NOMBRE CAS BSF TOTAL',
+        'COUT CAS BSF H',
+        'COUT CAS BSF F',
+        'COUT CAS BSF TOTAL',
+        'NOMBRE CAS CEC H',
+        'NOMBRE CAS CEC F',
+        'NOMBRE CAS CEC TOTAL',
+        'COUT CAS CEC H',
+        'COUT CAS CEC F',
+        'COUT CAS CEC TOTAL',
+        'NOMBRE CAS ELEVES H',
+        'NOMBRE CAS ELEVES F',
+        'NOMBRE CAS ELEVES TOTAL',
+        'COUT CAS ELEVES H',
+        'COUT CAS ELEVES F',
+        'COUT CAS ELEVES TOTAL',
+        'NOMBRE CAS NDONGO DAARA H',
+        'NOMBRE CAS NDONGO DAARA F',
+        'NOMBRE CAS NDONGO DAARA TOTAL',
+        'COUT CAS NDONGO DAARA H',
+        'COUT CAS NDONGO DAARA F',
+        'COUT CAS NDONGO DAARA TOTAL',
+        'NOMBRE CAS TOTAL H',
+        'NOMBRE CAS TOTAL F',
+        'NOMBRE CAS TOTAL',
+        'COUT CAS TOTAL H',
+        'COUT CAS TOTAL F',
+        'COUT CAS TOTAL',
+      ]
+    );
+  }
+
   onParsedDataFromCsv(data: any) {
     let enregistrements = this.parseToEnregistrementCout(data);
     this.enregistrementService

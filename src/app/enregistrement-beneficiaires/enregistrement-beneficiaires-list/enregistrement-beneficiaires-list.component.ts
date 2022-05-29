@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { BaseComponent } from 'src/shared/base-component/base.component';
 import { LocalDataSource } from 'ng2-smart-table';
 import { EnregistrementBeneficiairesService } from './../enregistrement-beneficiaires.service';
+import { EnregistrementBeneficiaire } from './../enregistrement-beneficiaires.model';
 
 @Component({
   selector: 'app-enregistrement-beneficiaires-list',
@@ -164,22 +165,22 @@ export class EnregistrementBeneficiairesListComponent
   @Output() tableEvent = new EventEmitter();
 
   constructor(
-    public enregistrementCoutService: EnregistrementBeneficiairesService
+    public enregistrementService: EnregistrementBeneficiairesService
   ) {
-    super(enregistrementCoutService);
+    super(enregistrementService);
   }
 
   // TODO: Corriger la reactualisation du tableau
   ngOnInit(): void {
     this.hideSidebar();
     this.tableDataSource = new LocalDataSource();
-    this.enregistrementCoutService.lastItemcreated$.subscribe(
+    this.enregistrementService.lastItemcreated$.subscribe(
       (enregistrementCout) => {
         console.log(enregistrementCout);
 
         this.tableDataSource.empty();
         this.tableDataSource.refresh();
-        this.tableDataSource.load(this.enregistrementCoutService.data);
+        this.tableDataSource.load(this.enregistrementService.data);
       }
     );
     this.getData();
@@ -187,8 +188,8 @@ export class EnregistrementBeneficiairesListComponent
 
   getData() {
     this.loading = true;
-    this.enregistrementCoutService.get().subscribe((data) => {
-      this.tableDataSource.load(this.enregistrementCoutService.data);
+    this.enregistrementService.get().subscribe((data) => {
+      this.tableDataSource.load(this.enregistrementService.data);
       this.loading = false;
     });
   }

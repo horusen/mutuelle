@@ -9,6 +9,9 @@
       <div>
         <app-csv-parser (data)="onParsedDataFromCsv($event)"></app-csv-parser>
 
+        <button class="btn btn-sm btn-primary mr-2"
+                (click)="downloadDataAsCsv()"><i class="fas fa-file-csv"></i> Export CSV</button>
+
         <button class="btn btn-sm btn-success"
                 [routerLink]="['./']"
                 [fragment]="'add-enregistrement-beneficiaires'"><i class="fas fa-plus"></i> Ajouter</button>
