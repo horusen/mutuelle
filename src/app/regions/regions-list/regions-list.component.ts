@@ -56,12 +56,8 @@ export class RegionsListComponent extends BaseComponent implements OnInit {
   // TODO: Corriger la reactualisation du tableau
   ngOnInit(): void {
     this.tableDataSource = new LocalDataSource();
-    this.regionService.lastItemcreated$.subscribe((region) => {
-      console.log(region);
-
-      this.tableDataSource.empty();
-      this.tableDataSource.refresh();
-      this.tableDataSource.load(this.regionService.data);
+    this.regionService.data$.subscribe((data) => {
+      this.tableDataSource = new LocalDataSource(data);
     });
     this.getData();
   }

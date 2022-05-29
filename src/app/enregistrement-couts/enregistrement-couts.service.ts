@@ -60,6 +60,36 @@ export class EnregistrementCoutsService extends BaseService<EnregistrementCout> 
     );
   }
 
+  store(elements: object) {
+    return this.factory.post(this.endPoint, elements).pipe(
+      tap({
+        next: (response) => {
+          this.lastItemCreated = this.transformData(response);
+          this.unshiftItemInData(this.transformData(response));
+        },
+        error: (error) => {
+          this.errorResponseHandler(error);
+        },
+      })
+    );
+  }
+
+  update(id: number, data: {}) {
+    return this.factory.put(`${this.endPoint}/${id}`, data).pipe(
+      tap({
+        next: (response) => {
+          this.updateItemInData(id, this.transformData(response));
+          this.lastItemEdited$.next(this.transformData(response));
+
+          if (this._singleData) {
+            this.singleData = this.transformData(response);
+          }
+        },
+        error: (error) => this.errorResponseHandler(error),
+      })
+    );
+  }
+
   prepareDataForCsvExporting() {
     return this.data.map((enregistrement) => ({
       region: enregistrement.region?.libelle,

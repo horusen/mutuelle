@@ -26,7 +26,7 @@ export class DepartementsListComponent extends BaseComponent implements OnInit {
       region: {
         title: 'Région',
         valuePrepareFunction: (cell: any) => {
-          return cell.libelle;
+          return cell?.libelle;
         },
         filterFunction: (cell: any, b: any, c: any) => {
           let match = cell.libelle.toLowerCase().includes(b.toLowerCase());
@@ -67,12 +67,8 @@ export class DepartementsListComponent extends BaseComponent implements OnInit {
   // TODO: Corriger la reactualisation du tableau
   ngOnInit(): void {
     this.tableDataSource = new LocalDataSource();
-    this.departementService.lastItemcreated$.subscribe((departement) => {
-      console.log(departement);
-
-      this.tableDataSource.empty();
-      this.tableDataSource.refresh();
-      this.tableDataSource.load(this.departementService.data);
+    this.departementService.data$.subscribe((data) => {
+      this.tableDataSource = new LocalDataSource(data);
     });
     this.getData();
   }

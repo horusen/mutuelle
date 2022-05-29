@@ -24,7 +24,7 @@ export class EnregistrementPrestationsListComponent
       region: {
         title: 'Région',
         valuePrepareFunction: (cell: any, row: any) => {
-          return cell.libelle;
+          return cell?.libelle;
         },
         filterFunction: (cell: any, b: any, c: any) => {
           let match = cell.libelle.toLowerCase().includes(b.toLowerCase());
@@ -39,7 +39,7 @@ export class EnregistrementPrestationsListComponent
       departement: {
         title: 'Département',
         valuePrepareFunction: (cell: any) => {
-          return cell.libelle;
+          return cell?.libelle;
         },
         filterFunction: (cell: any, b: any, c: any) => {
           let match = cell.libelle.toLowerCase().includes(b.toLowerCase());
@@ -54,7 +54,7 @@ export class EnregistrementPrestationsListComponent
       commune: {
         title: 'Commune',
         valuePrepareFunction: (cell: any) => {
-          return cell.libelle;
+          return cell?.libelle;
         },
         filterFunction: (cell: any, b: any, c: any) => {
           let match = cell.libelle.toLowerCase().includes(b.toLowerCase());
@@ -70,7 +70,7 @@ export class EnregistrementPrestationsListComponent
       mutuelle: {
         title: 'Mutuelle',
         valuePrepareFunction: (cell: any) => {
-          return cell.libelle;
+          return cell?.libelle;
         },
         filterFunction: (cell: any, b: any, c: any) => {
           let match = cell.libelle.toLowerCase().includes(b.toLowerCase());
@@ -85,7 +85,7 @@ export class EnregistrementPrestationsListComponent
       type: {
         title: 'Type de mutuelle',
         valuePrepareFunction: (cell: any) => {
-          return cell.libelle;
+          return cell?.libelle;
         },
         filterFunction: (cell: any, b: any, c: any) => {
           let match = cell.libelle.toLowerCase().includes(b.toLowerCase());
@@ -100,7 +100,7 @@ export class EnregistrementPrestationsListComponent
       type_prestation: {
         title: 'Type de prestation',
         valuePrepareFunction: (cell: any) => {
-          return cell.libelle;
+          return cell?.libelle;
         },
         filterFunction: (cell: any, b: any, c: any) => {
           let match = cell.libelle.toLowerCase().includes(b.toLowerCase());
@@ -191,15 +191,9 @@ export class EnregistrementPrestationsListComponent
   ngOnInit(): void {
     this.hideSidebar();
     this.tableDataSource = new LocalDataSource();
-    this.enregistrementPrestationService.lastItemcreated$.subscribe(
-      (enregistrementPrestation) => {
-        console.log(enregistrementPrestation);
-
-        this.tableDataSource.empty();
-        this.tableDataSource.refresh();
-        this.tableDataSource.load(this.enregistrementPrestationService.data);
-      }
-    );
+    this.enregistrementPrestationService.data$.subscribe((data) => {
+      this.tableDataSource = new LocalDataSource(data);
+    });
     this.getData();
   }
 

@@ -28,7 +28,10 @@ export class DepartementsEditComponent
         this.single = departement;
         this.form = this.fb.group({
           libelle: [this.single.libelle, Validators.required],
-          region: [[this.single.region], Validators.required],
+          region: [
+            this.single.region ? [this.single.region] : null,
+            Validators.required,
+          ],
         });
       });
   }

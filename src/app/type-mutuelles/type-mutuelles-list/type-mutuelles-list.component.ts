@@ -60,12 +60,8 @@ export class TypeMutuellesListComponent
   // TODO: Corriger la reactualisation du tableau
   ngOnInit(): void {
     this.tableDataSource = new LocalDataSource();
-    this.typeMutuelleService.lastItemcreated$.subscribe((typeMutuelle) => {
-      console.log(typeMutuelle);
-
-      this.tableDataSource.empty();
-      this.tableDataSource.refresh();
-      this.tableDataSource.load(this.typeMutuelleService.data);
+    this.typeMutuelleService.data$.subscribe((data) => {
+      this.tableDataSource = new LocalDataSource(data);
     });
     this.getData();
   }

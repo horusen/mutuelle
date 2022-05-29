@@ -30,7 +30,7 @@ export class CommunesListComponent
       departement: {
         title: 'Département',
         valuePrepareFunction: (cell: any) => {
-          return cell.libelle;
+          return cell?.libelle;
         },
         filterFunction: (cell: any, b: any, c: any) => {
           let match = cell.libelle.toLowerCase().includes(b.toLowerCase());
@@ -71,10 +71,8 @@ export class CommunesListComponent
   // TODO: Corriger la reactualisation du tableau
   ngOnInit(): void {
     this.tableDataSource = new LocalDataSource();
-    this.communeService.lastItemcreated$.subscribe((commune) => {
-      this.tableDataSource.empty();
-      this.tableDataSource.refresh();
-      this.tableDataSource.load(this.communeService.data);
+    this.communeService.data$.subscribe((data) => {
+      this.tableDataSource = new LocalDataSource(data);
     });
     this.getData();
   }

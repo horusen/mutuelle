@@ -26,7 +26,7 @@ export class MutuellesListComponent extends BaseComponent implements OnInit {
       type: {
         title: 'Type de mutuelle de santé',
         valuePrepareFunction: (cell: any) => {
-          return cell.libelle;
+          return cell?.libelle;
         },
         filterFunction: (cell: any, b: any, c: any) => {
           let match = cell.libelle.toLowerCase().includes(b.toLowerCase());
@@ -41,7 +41,7 @@ export class MutuellesListComponent extends BaseComponent implements OnInit {
       region: {
         title: 'Région',
         valuePrepareFunction: (cell: any, row: any) => {
-          return cell.libelle;
+          return cell?.libelle;
         },
         filterFunction: (cell: any, b: any, c: any) => {
           let match = cell.libelle.toLowerCase().includes(b.toLowerCase());
@@ -56,7 +56,7 @@ export class MutuellesListComponent extends BaseComponent implements OnInit {
       departement: {
         title: 'Département',
         valuePrepareFunction: (cell: any) => {
-          return cell.libelle;
+          return cell?.libelle;
         },
         filterFunction: (cell: any, b: any, c: any) => {
           let match = cell.libelle.toLowerCase().includes(b.toLowerCase());
@@ -72,7 +72,7 @@ export class MutuellesListComponent extends BaseComponent implements OnInit {
       commune: {
         title: 'Commune',
         valuePrepareFunction: (cell: any) => {
-          return cell.libelle;
+          return cell?.libelle;
         },
         filterFunction: (cell: any, b: any, c: any) => {
           let match = cell.libelle.toLowerCase().includes(b.toLowerCase());
@@ -113,12 +113,8 @@ export class MutuellesListComponent extends BaseComponent implements OnInit {
   // TODO: Corriger la reactualisation du tableau
   ngOnInit(): void {
     this.tableDataSource = new LocalDataSource();
-    this.mutuelleService.lastItemcreated$.subscribe((mutuelle) => {
-      console.log(mutuelle);
-
-      this.tableDataSource.empty();
-      this.tableDataSource.refresh();
-      this.tableDataSource.load(this.mutuelleService.data);
+    this.mutuelleService.data$.subscribe((data) => {
+      this.tableDataSource = new LocalDataSource(data);
     });
     this.getData();
   }

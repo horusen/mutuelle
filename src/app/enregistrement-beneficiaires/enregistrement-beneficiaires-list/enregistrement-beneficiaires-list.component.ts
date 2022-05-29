@@ -25,7 +25,7 @@ export class EnregistrementBeneficiairesListComponent
       region: {
         title: 'Région',
         valuePrepareFunction: (cell: any, row: any) => {
-          return cell.libelle;
+          return cell?.libelle;
         },
         filterFunction: (cell: any, b: any, c: any) => {
           let match = cell.libelle.toLowerCase().includes(b.toLowerCase());
@@ -40,7 +40,7 @@ export class EnregistrementBeneficiairesListComponent
       departement: {
         title: 'Département',
         valuePrepareFunction: (cell: any) => {
-          return cell.libelle;
+          return cell?.libelle;
         },
         filterFunction: (cell: any, b: any, c: any) => {
           let match = cell.libelle.toLowerCase().includes(b.toLowerCase());
@@ -55,7 +55,7 @@ export class EnregistrementBeneficiairesListComponent
       commune: {
         title: 'Commune',
         valuePrepareFunction: (cell: any) => {
-          return cell.libelle;
+          return cell?.libelle;
         },
         filterFunction: (cell: any, b: any, c: any) => {
           let match = cell.libelle.toLowerCase().includes(b.toLowerCase());
@@ -71,7 +71,7 @@ export class EnregistrementBeneficiairesListComponent
       mutuelle: {
         title: 'Mutuelle',
         valuePrepareFunction: (cell: any) => {
-          return cell.libelle;
+          return cell?.libelle;
         },
         filterFunction: (cell: any, b: any, c: any) => {
           let match = cell.libelle.toLowerCase().includes(b.toLowerCase());
@@ -86,7 +86,7 @@ export class EnregistrementBeneficiairesListComponent
       type: {
         title: 'Type',
         valuePrepareFunction: (cell: any) => {
-          return cell.libelle;
+          return cell?.libelle;
         },
         filterFunction: (cell: any, b: any, c: any) => {
           let match = cell.libelle.toLowerCase().includes(b.toLowerCase());
@@ -174,15 +174,9 @@ export class EnregistrementBeneficiairesListComponent
   ngOnInit(): void {
     this.hideSidebar();
     this.tableDataSource = new LocalDataSource();
-    this.enregistrementService.lastItemcreated$.subscribe(
-      (enregistrementCout) => {
-        console.log(enregistrementCout);
-
-        this.tableDataSource.empty();
-        this.tableDataSource.refresh();
-        this.tableDataSource.load(this.enregistrementService.data);
-      }
-    );
+    this.enregistrementService.data$.subscribe((data) => {
+      this.tableDataSource = new LocalDataSource(data);
+    });
     this.getData();
   }
 
