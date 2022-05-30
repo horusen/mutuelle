@@ -21,6 +21,15 @@ export class EnregistrementCoutsComponent
     super(enregistrementService, router, route, 'enregistrement-couts');
   }
 
+  ngOnInit(): void {
+    super.ngOnInit();
+    this.hideSidebar();
+    this.subscriptions['modal'] =
+      this.enregistrementService.showModal$.subscribe(() => {
+        this.helper.modal.show('enregistrement-couts-show-modal');
+      });
+  }
+
   onTableEvent(event: any) {
     if (event.action == 'edit') {
       this.modifer(event.data);

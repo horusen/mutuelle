@@ -21,6 +21,12 @@ export class MutuellesComponent
     super(mutuelleService, router, route, 'mutuelles');
   }
 
+  ngOnInit(): void {
+    super.ngOnInit();
+
+    this.showSidebar();
+  }
+
   onTableEvent(event: any) {
     if (event.action == 'edit') {
       this.modifer(event.data);

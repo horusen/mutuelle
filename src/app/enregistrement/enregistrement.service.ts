@@ -8,6 +8,7 @@ import { Enregistrement } from './enregistrement.model';
 import { Params } from '@angular/router';
 import { tap, map } from 'rxjs/operators';
 import { ApiResponse } from './../../shared/models/ApiResponse';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',

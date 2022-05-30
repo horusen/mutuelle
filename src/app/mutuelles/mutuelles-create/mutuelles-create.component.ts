@@ -8,6 +8,8 @@ import { DepartementService } from 'src/app/departements/departement.service';
 import { RegionService } from 'src/app/regions/region.service';
 import { CommuneService } from 'src/app/communes/commune.service';
 import { TypeMutuellesService } from 'src/app/type-mutuelles/type-mutuelles.service';
+import { Commune } from 'src/app/communes/commune.model';
+import { TypeMutuelle } from './../../type-mutuelles/type-mutuelles.model';
 
 @Component({
   selector: 'app-mutuelles-create',
@@ -78,12 +80,19 @@ export class MutuellesCreateComponent
   }
 
   ngOnInit(): void {
+    this.initialiseForm();
+  }
+
+  initialiseForm(mutuelle?: Mutuelle): void {
     this.form = this.fb.group({
-      libelle: [null, Validators.required],
-      region: [null, Validators.required],
-      departement: [null, Validators.required],
-      type: [null, Validators.required],
-      commune: [null, Validators.required],
+      libelle: [mutuelle ? mutuelle.libelle : null, Validators.required],
+      region: [mutuelle ? [mutuelle.region] : null, Validators.required],
+      departement: [
+        mutuelle ? [mutuelle.departement] : null,
+        Validators.required,
+      ],
+      commune: [mutuelle ? [mutuelle.commune] : null, Validators.required],
+      type: [mutuelle ? [mutuelle.type] : null, Validators.required],
     });
 
     this.form.get('region')!.valueChanges.subscribe((value) => {
@@ -102,17 +111,21 @@ export class MutuellesCreateComponent
   }
 
   create() {
-    this.loading = true;
-    this.mutuelleService
-      .store({
-        ...this.form.value,
-        commune: this.formValue('commune')[0].id,
-        type: this.formValue('type')[0].id,
-      })
-      .subscribe(() => {
-        this.loading = false;
-        this.helper.notification.alertSuccess();
-        this.form.reset();
-      });
+    if (this.form.valid) {
+      this.loading = true;
+      this.mutuelleService
+        .store({
+          ...this.form.value,
+          commune: this.formValue('commune')[0].id,
+          type: this.formValue('type')[0].id,
+        })
+        .subscribe(() => {
+          this.loading = false;
+          this.helper.notification.alertSuccess();
+          this.form.reset();
+        });
+    } else {
+      this.helper.notification.alertDanger('Formulaire invalide');
+    }
   }
 }

@@ -40,11 +40,11 @@ export class EnregistrementPrestationsShowComponent
   ngAfterViewInit(): void {
     this.route.params.subscribe((params) => {
       if (params.id) {
-        this.helper.modal.toggle('enregistrement-prestations-show-modal');
         this.loading = true;
         this.enregistrementService
           .show(+params.id)
           .subscribe((enregistrement) => {
+            this.enregistrementService.showModal$.next();
             this.date = new Date(enregistrement.date);
             this.single = enregistrement;
             this.loading = false;

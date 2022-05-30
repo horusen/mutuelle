@@ -49,6 +49,10 @@ const routes: Routes = [
             (module) => module.ConfigurationModule
           ),
       },
+      {
+        path: '',
+        redirectTo: 'mutuelles',
+      },
     ],
   },
 ];

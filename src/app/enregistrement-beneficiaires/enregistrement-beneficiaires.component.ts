@@ -21,6 +21,15 @@ export class EnregistrementBeneficiairesComponent
     super(enregistrementService, router, route, 'enregistrement-beneficiaires');
   }
 
+  ngOnInit(): void {
+    super.ngOnInit();
+    this.hideSidebar();
+    this.subscriptions['modal'] =
+      this.enregistrementService.showModal$.subscribe(() => {
+        this.helper.modal.show('enregistrement-beneficiaires-show-modal');
+      });
+  }
+
   onTableEvent(event: any) {
     if (event.action == 'edit') {
       this.modifer(event.data);
@@ -33,7 +42,7 @@ export class EnregistrementBeneficiairesComponent
       this.supprimer(event.data);
     } else if (event.action == 'show') {
       this.router.navigate([event.data.id], { relativeTo: this.route });
-      this.helper.modal.show('enregistrement-beneficiaires-show-modal');
+      // this.helper.modal.show('enregistrement-beneficiaires-show-modal');
     }
   }
 

@@ -24,7 +24,7 @@ export abstract class BaseComponent<T = any> implements OnDestroy {
   public helper: Helper;
   // public auth: AuthService = null;
 
-  constructor(public service: BaseService) {
+  constructor(public service?: BaseService) {
     this.helper = AppInjector.injector.get(Helper);
     // this.auth = AppInjector.injector.get(AuthService);
   }
@@ -63,7 +63,7 @@ export abstract class BaseComponent<T = any> implements OnDestroy {
     this.helper.notification.confirm(() => {
       this.loading = true;
 
-      this.service.delete(item.id!).subscribe(() => {
+      this.service?.delete(item.id!).subscribe(() => {
         this.loading = false;
         this.helper.notification.alertSuccess();
       });

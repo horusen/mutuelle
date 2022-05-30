@@ -13,18 +13,6 @@
       <div class="sidebar-brand-text mx-3">UNAMUSC</div>
     </a>
 
-    <!-- Divider -->
-    <hr class="sidebar-divider ">
-
-    <!-- Nav Item - Dashboard -->
-    <li class="nav-item ">
-      <a class="nav-link"
-         href="index.html">
-        <i class="fas fa-fw fa-tachometer-alt"></i>
-        <span>Dashboard</span></a>
-    </li>
-
-
 
     <!-- Divider -->
     <hr class="sidebar-divider">
@@ -98,8 +86,25 @@
 
 
 
+
+
     <!-- Divider -->
     <hr class="sidebar-divider">
+
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item ">
+      <a class="nav-link"
+         [routerLink]="['./']"
+         (click)="deconnexion()">
+        <i class="fas fa-fw fa-door-open"></i>
+        <span>Deconnexion</span></a>
+    </li>
+
+
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
 
 
 

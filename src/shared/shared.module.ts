@@ -11,9 +11,18 @@ import { LoadingModule } from './loading/loading.module';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { ModalModule } from './modal/modal.module';
 import { CsvParserModule } from 'src/shared/csv-parser/csv-parser.module';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 
 @NgModule({
   declarations: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
+  ],
   imports: [
     CommonModule,
     LoadingModule,

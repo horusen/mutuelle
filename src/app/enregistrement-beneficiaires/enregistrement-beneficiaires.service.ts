@@ -9,11 +9,13 @@ import { ApiResponse } from './../../shared/models/ApiResponse';
 import { Params } from '@angular/router';
 import { tap, map } from 'rxjs/operators';
 import { TypeMutuelle } from './../type-mutuelles/type-mutuelles.model';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class EnregistrementBeneficiairesService extends BaseService<EnregistrementBeneficiaire> {
+  showModal$ = new Subject();
   constructor() {
     super('enregistrement-beneficiaires');
   }

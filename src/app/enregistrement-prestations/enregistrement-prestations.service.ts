@@ -10,11 +10,13 @@ import { Departement } from '../departements/departement.model';
 import { Region } from '../regions/region.model';
 import { TypeMutuelle } from '../type-mutuelles/type-mutuelles.model';
 import { TypePrestation } from './../type-prestations/type-prestations.model';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class EnregistrementPrestationsService extends BaseService<EnregistrementPrestation> {
+  showModal$ = new Subject();
   constructor() {
     super('enregistrement-prestations');
   }

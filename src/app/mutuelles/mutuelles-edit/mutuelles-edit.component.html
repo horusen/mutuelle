@@ -1,1 +1,98 @@
-<p>mutuelles-edit works!</p>
+<form [formGroup]="form"
+      *ngIf="single"
+      (submit)="update()">
+
+
+  <!-- Region et department -->
+  <div class="row">
+
+    <div class="col-12">
+      <div class="form-group">
+        <label for="exampleInputEmail1">Libelle</label>
+        <input type="text"
+               formControlName="libelle"
+               class="form-control">
+      </div>
+    </div>
+
+
+    <!-- region -->
+    <div class="col-6">
+      <div class="form-group">
+        <label for="exampleInputEmail1">
+          Région
+          <i class="fad fa-spinner fa-spin ml-2"
+             *ngIf="dependanciesLoading.regions"></i>
+        </label>
+        <angular2-multiselect [data]="dependancies.regions"
+                              (click)="getRegions()"
+                              [settings]="helper.dropdownSettings.single"
+                              formControlName="region"
+                              class=" ">
+        </angular2-multiselect>
+
+      </div>
+    </div>
+
+    <!-- Departement -->
+    <div class="col-6">
+      <div class="form-group">
+        <label for="exampleInputEmail1">Département <i class="fad fa-spinner fa-spin ml-2"
+             *ngIf="dependanciesLoading.departements"></i></label>
+        <angular2-multiselect [data]="dependancies.departements"
+                              [disabled]="form.get('region')!.value == null"
+                              [settings]="helper.dropdownSettings.single"
+                              formControlName="departement"
+                              class=" ">
+        </angular2-multiselect>
+        <small id="emailHelp"
+               class="form-text text-muted">Choisir une région pour charger les départments</small>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- COmmune et type -->
+  <div class="row">
+    <!-- Commune -->
+    <div class="col-6">
+      <div class="form-group">
+        <label for="exampleInputEmail1">Commune <i class="fad fa-spinner fa-spin ml-2"
+             *ngIf="dependanciesLoading.communes"></i></label>
+        <angular2-multiselect [data]="dependancies.communes"
+                              [disabled]="form.get('departement')!.value == null"
+                              [settings]="helper.dropdownSettings.single"
+                              formControlName="commune"
+                              class=" ">
+        </angular2-multiselect>
+        <small id="emailHelp"
+               class="form-text text-muted">Choisir un departement pour charger les communes</small>
+      </div>
+    </div>
+
+    <!-- type -->
+    <div class="col-6">
+      <div class="form-group">
+        <label for="yeah">Type <i class="fad fa-spinner fa-spin ml-2"
+             *ngIf="dependanciesLoading.types"></i></label>
+        <angular2-multiselect [data]="dependancies.types"
+                              (click)="getTypes()"
+                              [settings]="helper.dropdownSettings.single"
+                              formControlName="type"
+                              class=" ">
+        </angular2-multiselect>
+
+      </div>
+    </div>
+
+  </div>
+
+
+  <div class="d-flex w-100 justify-content-end">
+    <button type="submit"
+            class="btn btn-md btn-success"
+            [disabled]="form.invalid">
+      <i class="fad fa-circle-notch fa-spin"
+         *ngIf="loading"></i>Valider </button>
+  </div>
+</form>

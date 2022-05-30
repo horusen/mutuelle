@@ -21,19 +21,57 @@ export class MutuellesService extends BaseService<Mutuelle> {
       .get(`${this.endPoint}`, { params: options?.params })
       .pipe(
         tap((response: ApiResponse<Mutuelle>) => {
-          this.data = response.data.map((mutuelle: any) => {
-            return {
-              ...mutuelle,
-              departement: (mutuelle.commune as Commune).departement,
-              region: (
-                (mutuelle.commune as Commune)
-                  .departement as unknown as Departement
-              ).region,
-            };
-          });
+          this.data = response.data.map((mutuelle: any) =>
+            this.transformData(mutuelle)
+          );
         }),
         map((response) => response.data)
       );
+  }
+
+  store(elements: object) {
+    return this.factory.post(this.endPoint, elements).pipe(
+      tap({
+        next: (response) => {
+          this.lastItemCreated = this.transformData(response);
+          this.unshiftItemInData(this.transformData(response));
+        },
+        error: (error) => {
+          this.errorResponseHandler(error);
+        },
+      })
+    );
+  }
+
+  update(id: number, data: {}) {
+    return this.factory.put(`${this.endPoint}/${id}`, data).pipe(
+      tap({
+        next: (response) => {
+          this.updateItemInData(id, this.transformData(response));
+          this.lastItemEdited$.next(this.transformData(response));
+
+          if (this._singleData) {
+            this.singleData = this.transformData(response);
+          }
+        },
+        error: (error) => this.errorResponseHandler(error),
+      })
+    );
+  }
+
+  transformData(mutuelle: Mutuelle) {
+    let commune = mutuelle.commune as Commune;
+    let departement = commune.departement as Departement;
+    let region = departement.region as Region;
+    let type = mutuelle.type;
+
+    return {
+      ...mutuelle,
+      commune,
+      departement,
+      region,
+      type,
+    };
   }
 
   getByCommuneAndByType(commune: number, type: number) {

@@ -9,11 +9,13 @@ import { Departement } from './../departements/departement.model';
 import { Region } from 'src/app/regions/region.model';
 import { tap, map } from 'rxjs/operators';
 import { TypeMutuelle } from './../type-mutuelles/type-mutuelles.model';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class EnregistrementCoutsService extends BaseService<EnregistrementCout> {
+  showModal$ = new Subject();
   constructor() {
     super('enregistrement-couts');
   }

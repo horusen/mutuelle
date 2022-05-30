@@ -45,6 +45,7 @@ export class EnregistrementCoutsShowComponent
         this.enregistrementService
           .show(+params.id)
           .subscribe((enregistrement) => {
+            this.enregistrementService.showModal$.next();
             this.date = new Date(enregistrement.date);
             this.single = enregistrement;
             this.loading = false;
