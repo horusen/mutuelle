@@ -38,7 +38,10 @@
                        formControlName="password"
                        placeholder="Mot de passe">
               </div>
-              <button class="btn btn-success btn-user btn-block">
+              <button class="btn btn-success btn-user btn-block"
+                      [disabled]="form.invalid">
+                <i class="fad fa-circle-notch fa-spin"
+                   *ngIf="loading"></i>
                 Valider
               </button>
               <hr>

@@ -18,18 +18,26 @@ export class UsersCreateComponent
   }
 
   ngOnInit(): void {
+    this.initialiseForm();
+  }
+
+  initialiseForm(user?: User) {
     this.form = this.fb.group({
-      name: [null, Validators.required],
-      email: [null, Validators.required],
+      name: [user ? user.name : null, Validators.required],
+      email: [user ? user.email : null, Validators.required],
     });
   }
 
   create() {
-    this.loading = true;
-    this.userService.store(this.form.value).subscribe(() => {
-      this.loading = false;
-      this.helper.notification.alertSuccess();
-      this.form.reset();
-    });
+    if (this.form.valid) {
+      this.loading = true;
+      this.userService.store(this.form.value).subscribe(() => {
+        this.loading = false;
+        this.helper.notification.alertSuccess();
+        this.form.reset();
+      });
+    } else {
+      this.helper.notification.alertDanger('Formulaire invalide');
+    }
   }
 }

@@ -42,7 +42,7 @@ export class ConnexionComponent extends BaseCreateComponent implements OnInit {
       },
       (error) => {
         // if (error.status === 401) {
-        this.helper.notification.toastDanger('Donnée de connexion erroné');
+        this.helper.notification.toastDanger(error.error.message);
         this.markFormAsInvalid();
         this.loading = false;
         // }

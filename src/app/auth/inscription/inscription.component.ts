@@ -29,9 +29,9 @@ export class InscriptionComponent
   }
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe((params) =>
-      this._checkRegistrationInformation(params)
-    );
+    this.route.queryParams.subscribe((params) => {
+      this._checkRegistrationInformation(params);
+    });
   }
 
   private _checkRegistrationInformation(params: Params) {

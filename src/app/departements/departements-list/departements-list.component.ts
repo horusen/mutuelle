@@ -47,11 +47,11 @@ export class DepartementsListComponent extends BaseComponent implements OnInit {
         {
           name: 'edit',
           type: 'html',
-          title: '<a class="fas fa-edit text-success" ></a>',
+          title: '<a class="far fa-edit text-success" ></a>',
         },
         {
           name: 'delete',
-          title: '<a class="fas fa-trash   ml-2 text-danger"></a>',
+          title: '<a class="far fa-trash   ml-2 text-danger"></a>',
         },
       ],
       position: 'right',

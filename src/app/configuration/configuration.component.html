@@ -28,7 +28,8 @@
            routerLink="type-prestations"
            routerLinkActive="active">Type de préstation</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item"
+          *ngIf="authService.user.id === 1">
         <a class="nav-link"
            routerLink="utilisateurs"
            routerLinkActive="active">Utilisateurs</a>

@@ -1,3 +1,15 @@
-::ng-deep .hide-resend-email td.ng2-smart-actions a.resend {
+::ng-deep .hide-resend-email-button td.ng2-smart-actions a.resend {
+  display: none;
+}
+
+::ng-deep .hide-activate-button td.ng2-smart-actions a.activate {
+  display: none;
+}
+
+::ng-deep .hide-desactivate-button td.ng2-smart-actions a.desactivate {
+  display: none;
+}
+
+::ng-deep .hide-edit-button td.ng2-smart-actions a.edit {
   display: none;
 }

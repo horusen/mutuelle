@@ -8,7 +8,7 @@
     <a class="sidebar-brand mb-5 d-flex align-items-center justify-content-center"
        href="index.html">
       <div class="sidebar-brand-icon rotate-n-15">
-        <i class="fas fa-school"></i>
+        <i class="fad fa-school"></i>
       </div>
       <div class="sidebar-brand-text mx-3">UNAMUSC</div>
     </a>
@@ -22,7 +22,8 @@
         [routerLinkActive]="'active'">
       <a class="nav-link"
          [routerLink]="['mutuelles']">
-        <i class="fas fa-fw fa-school"></i>
+        <i [routerLinkActive]="'fas'"
+           class="far fa-fw fa-school"></i>
         <span>Mutuelles de santé</span></a>
     </li>
 
@@ -34,7 +35,8 @@
         [routerLinkActive]="'active'">
       <a class="nav-link"
          [routerLink]="['enregistrement-couts']">
-        <i class="fas fa-fw fa-money-check-alt"></i>
+        <i [routerLinkActive]="'fas'"
+           class="far fa-fw fa-money-check-alt"></i>
         <span>Enregistrements coûts</span></a>
     </li>
 
@@ -46,7 +48,8 @@
         [routerLinkActive]="'active'">
       <a class="nav-link w-100"
          [routerLink]="['enregistrement-prestations']">
-        <i class="fas fa-fw fa-user-md"></i>
+        <i [routerLinkActive]="'fas'"
+           class="far fa-fw fa-user-md"></i>
         <span>Enregistrements prestations</span></a>
     </li>
 
@@ -58,14 +61,10 @@
         [routerLinkActive]="'active'">
       <a class="nav-link w-100"
          [routerLink]="['enregistrement-beneficiaires']">
-        <i class="fas fa-fw fa-users"></i>
+        <i [routerLinkActive]="'fas'"
+           class="far fa-fw fa-users"></i>
         <span>Enregistrements bénéficiaires</span></a>
     </li>
-
-
-
-
-
 
 
 
@@ -76,11 +75,12 @@
     <hr class="sidebar-divider">
 
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item ">
+    <li class="nav-item "
+        [routerLinkActive]="'active'">
       <a class="nav-link"
-         [routerLinkActive]="'active'"
          [routerLink]="['configurations']">
-        <i class="fas fa-fw fa-cog"></i>
+        <i [routerLinkActive]="'fas'"
+           class="far fa-fw fa-cog"></i>
         <span>Configuration</span></a>
     </li>
 
@@ -95,8 +95,10 @@
     <li class="nav-item ">
       <a class="nav-link"
          [routerLink]="['./']"
+         [routerLinkActive]="'active'"
+         [routerLinkActiveOptions]="{exact: true}"
          (click)="deconnexion()">
-        <i class="fas fa-fw fa-door-open"></i>
+        <i class="far fa-fw fa-door-open"></i>
         <span>Deconnexion</span></a>
     </li>
 
@@ -134,7 +136,7 @@
             <div class="input-group-append">
               <button class="btn btn-primary"
                       type="button">
-                <i class="fas fa-search fa-sm"></i>
+                <i [routerLinkActive]="'fas'" class="far fa-search fa-sm"></i>
               </button>
             </div>
           </div>
@@ -161,3 +163,7 @@
     <!-- End of Content Wrapper -->
 
   </div>
+</div>
+
+
+<app-modal-loading></app-modal-loading>

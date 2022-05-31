@@ -28,11 +28,35 @@ export class UsersListComponent extends BaseComponent implements OnInit {
         editable: true,
         sort: true,
       },
+      etat: {
+        title: 'Etat',
+        sort: true,
+        valuePrepareFunction: (cell: any) => {
+          return cell?.libelle;
+        },
+        filterFunction: (cell: any, b: any, c: any) => {
+          let match = cell.libelle.toLowerCase().includes(b.toLowerCase());
+          if (match || b === '') {
+            return true;
+          } else {
+            return false;
+          }
+        },
+      },
     },
     rowClassFunction: (row: any) => {
-      console.log(row.data.email_verified_at);
+      let className = '';
 
-      return row.data.email_verified_at ? 'hide-resend-email' : '';
+      if (row.data.etat.id == 1)
+        className += 'hide-activate-button hide-desactivate-button';
+      else if (row.data.etat.id == 2)
+        className +=
+          'hide-resend-email-button hide-edit-button hide-activate-button';
+      else if (row.data.etat.id == 3)
+        className +=
+          'hide-desactivate-button hide-resend-email-button hide-edit-button';
+
+      return className;
     },
     actions: {
       add: false,
@@ -42,18 +66,29 @@ export class UsersListComponent extends BaseComponent implements OnInit {
         {
           name: 'edit',
           type: 'html',
-          title:
-            '<a class="fas fa-edit ml-3 text-success" [ngbTooltip]="\'Modifier\'" ></a>',
+          title: '<a class="far fa-edit edit ml-3 text-success"  ></a>',
         },
-        {
-          name: 'delete',
-          title: '<a class="fas fa-trash   ml-3 text-danger"></a>',
-        },
+
         {
           name: 'resend',
           type: 'html',
+          title: '<a class="far fa-envelope resend text-primary ml-3"  ></a>',
+        },
+        {
+          name: 'unblock',
+          type: 'html',
           title:
-            '<a class="fas fa-envelope resend text-primary ml-3" [ngbTooltip]="\'Modifier\'" ></a>',
+            '<a class="far fa-badge-check activate text-primary ml-3" ></a>',
+        },
+        {
+          name: 'block',
+          type: 'html',
+          title:
+            '<a class="far fa-ban desactivate text-secondary ml-3" " ></a>',
+        },
+        {
+          name: 'delete',
+          title: '<a class="far fa-trash   ml-3 text-danger"></a>',
         },
       ],
       position: 'right',
@@ -69,12 +104,8 @@ export class UsersListComponent extends BaseComponent implements OnInit {
   // TODO: Corriger la reactualisation du tableau
   ngOnInit(): void {
     this.tableDataSource = new LocalDataSource();
-    this.userService.lastItemcreated$.subscribe((user) => {
-      console.log(user);
-
-      this.tableDataSource.empty();
-      this.tableDataSource.refresh();
-      this.tableDataSource.load(this.userService.data);
+    this.userService.data$.subscribe((data) => {
+      this.tableDataSource = new LocalDataSource(data);
     });
     this.getData();
   }

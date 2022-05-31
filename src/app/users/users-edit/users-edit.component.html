@@ -1,1 +1,39 @@
-<p>users-edit works!</p>
+<form [formGroup]="form"
+      *ngIf="single"
+      (submit)="update()">
+  <div class="row">
+    <!-- Nom complet -->
+    <div class="col-12">
+      <div class="form-group">
+        <label for="exampleInputEmail1">Nom complet</label>
+        <input type="text"
+               required="true"
+               formControlName="name"
+               class="form-control">
+      </div>
+    </div>
+
+
+    <!-- Email -->
+    <div class="col-12">
+      <div class="form-group">
+        <label for="exampleInputEmail1">Email</label>
+        <input type="email"
+               formControlName="email"
+               required=""
+               class="form-control">
+      </div>
+    </div>
+
+
+    <div class="col-12 text-right">
+      <button class="btn btn-sm btn-success mr-1"
+              type="submit"
+              [disabled]="form.invalid">
+        <i class="fad fa-circle-notch fa-spin"
+           *ngIf="loading"></i>
+        Valider
+      </button>
+    </div>
+  </div>
+</form>

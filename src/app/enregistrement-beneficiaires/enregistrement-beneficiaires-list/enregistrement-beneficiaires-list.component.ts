@@ -146,16 +146,16 @@ export class EnregistrementBeneficiairesListComponent
         {
           name: 'show',
           type: 'html',
-          title: '<div class="fas fa-eye mr-2 text-primary" ></div>',
+          title: '<div class="far fa-eye mr-2 text-primary" ></div>',
         },
         {
           name: 'edit',
           type: 'html',
-          title: '<div class="fas fa-edit mr-2 text-success" ></div>',
+          title: '<div class="far fa-edit mr-2 text-success" ></div>',
         },
         {
           name: 'delete',
-          title: '<div class="fas fa-trash   text-danger"></div>',
+          title: '<div class="far fa-trash   text-danger"></div>',
         },
       ],
       position: 'left',

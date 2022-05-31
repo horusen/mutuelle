@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BaseComponent } from 'src/shared/base-component/base.component';
+import { AuthService } from '../auth/auth.service';
 
 @Component({
   selector: 'app-configuration',
@@ -7,7 +8,7 @@ import { BaseComponent } from 'src/shared/base-component/base.component';
   styleUrls: ['./configuration.component.scss'],
 })
 export class ConfigurationComponent extends BaseComponent implements OnInit {
-  constructor() {
+  constructor(public authService: AuthService) {
     super();
   }
 

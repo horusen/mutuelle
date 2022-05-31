@@ -8,6 +8,7 @@ import { MutuelleListComponent } from '../mutuelle-list/mutuelle-list.component'
 import { MutuelShowComponent } from '../mutuel-show/mutuel-show.component';
 import { Routes, RouterModule } from '@angular/router';
 import { SharedModule } from 'src/shared/shared.module';
+import { ModalLoadingComponent } from '../modal-loading/modal-loading.component';
 
 const routes: Routes = [
   {
@@ -65,6 +66,7 @@ const routes: Routes = [
     RecapitulatifComponent,
     MutuelleListComponent,
     MutuelShowComponent,
+    ModalLoadingComponent,
   ],
   imports: [CommonModule, SharedModule, RouterModule.forChild(routes)],
   exports: [RouterModule],

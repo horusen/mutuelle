@@ -20,7 +20,7 @@
             <form class="user"
                   [formGroup]="form"
                   (submit)="register()"
-                  *ngIf="single && !loading">
+                  *ngIf="single">
               <!-- Nom complet -->
               <div class="form-group">
                 <input type="email"
@@ -56,7 +56,10 @@
                          placeholder="Confirmer votre mot de passe">
                 </div>
               </div>
-              <button class="btn btn-success btn-user btn-block">
+              <button class="btn btn-success btn-user btn-block"
+                      [disabled]="form.invalid">
+                <i class="fad fa-circle-notch fa-spin"
+                   *ngIf="loading"></i>
                 Terminer l'enregistrement
               </button>
               <hr>

@@ -1,0 +1,22 @@
+<div class="modal animated bounceInDown"
+     [id]="'modal-loading'"
+     tabindex="-1"
+     role="dialog"
+     data-backdrop="static"
+     data-keyboard="false"
+     [attr.aria-labelledby]="modalName + '-label'"
+     aria-hidden="true">
+  <div [class]="'modal-dialog modal-md'"
+       style="top: 35%"
+       role=" document">
+    <div class="modal-content p-0">
+
+      <div class="modal-body">
+
+        <p class="text-center"><i class="fad fa-circle-notch fa-spin fa-7x"></i></p>
+        <h2 class="text-center">{{ modalLoadingService.message }}</h2>
+
+      </div>
+    </div>
+  </div>
+</div>

@@ -19,7 +19,9 @@ export class AuthService extends BaseService {
   }
 
   resendEmailVerification(user: number): Observable<any> {
-    return this.factory.get(`user/${user}/email/resend`);
+    return this.factory
+      .get(`user/${user}/email/resend`)
+      .pipe(tap(this.onlyErrorResponseHandler()));
   }
 
   logout() {
