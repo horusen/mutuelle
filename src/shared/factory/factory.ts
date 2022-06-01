@@ -8,7 +8,7 @@ import { Storage } from '../storage/storage';
   providedIn: 'root',
 })
 export class Factory {
-  public baseUrl = 'http://localhost:8000/api';
+  public baseUrl = 'https://frozen-inlet-80806.herokuapp.com/api';
   private _headers = {
     Authorization: `Bearer ${this.storage.getAccessToken()}`,
   };
