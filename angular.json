@@ -36,7 +36,8 @@
             "scripts": [
               "src/assets/vendor/jquery/jquery.min.js",
               "src/assets/vendor/bootstrap/js/bootstrap.min.js",
-              "src/assets/js/sb-admin-2.min.js"
+              "src/assets/js/sb-admin-2.min.js",
+              "node_modules/apexcharts/dist/apexcharts.min.js"
             ]
           },
           "configurations": {

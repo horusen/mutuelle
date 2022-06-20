@@ -3,12 +3,13 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Storage } from '../storage/storage';
 // import { TokenStorage } from "./token-storage.service";
+import { environment } from './../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class Factory {
-  public baseUrl = 'https://frozen-inlet-80806.herokuapp.com/api';
+  public baseUrl = environment.baseURL;
   private _headers = {
     Authorization: `Bearer ${this.storage.getAccessToken()}`,
   };

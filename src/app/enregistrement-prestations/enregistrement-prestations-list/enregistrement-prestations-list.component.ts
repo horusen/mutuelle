@@ -119,7 +119,7 @@ export class EnregistrementPrestationsListComponent
         sort: true,
         valuePrepareFunction: (cell: any) => {
           const date = new Date(cell);
-          return `${date.getDay()}/${date.getMonth()}/${date.getFullYear()}
+          return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}
           `;
         },
       },

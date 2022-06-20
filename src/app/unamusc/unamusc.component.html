@@ -21,6 +21,20 @@
     <li class="nav-item "
         [routerLinkActive]="'active'">
       <a class="nav-link"
+         [routerLink]="['dashboard']">
+        <i [routerLinkActive]="'fas'"
+           class="far fa-fw fa-chart-line"></i>
+        <span>Tableau de bord</span></a>
+    </li>
+
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item "
+        [routerLinkActive]="'active'">
+      <a class="nav-link"
          [routerLink]="['mutuelles']">
         <i [routerLinkActive]="'fas'"
            class="far fa-fw fa-school"></i>

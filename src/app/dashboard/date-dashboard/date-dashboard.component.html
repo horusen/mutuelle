@@ -1,0 +1,56 @@
+<form [formGroup]="form"
+      (submit)="emitDate()"
+      class="row justify-content-center mb-2 align-items-end">
+  <!-- date -->
+  <div class="
+     col-3">
+    <div class="form-group mb-0">
+      <label for="exampleInputEmail1">Debut</label>
+      <div class="input-group">
+        <input class="form-control "
+               placeholder="yyyy-mm-dd"
+               formControlName="date_debut"
+               name="dp"
+               (click)="debut.toggle()"
+               ngbDatepicker
+               #debut="ngbDatepicker">
+
+      </div>
+    </div>
+  </div>
+
+  <!-- date -->
+  <div class="col-3">
+    <div class="form-group mb-0">
+      <label for="exampleInputEmail1">Fin</label>
+      <div class="input-group">
+        <input class="form-control "
+               placeholder="yyyy-mm-dd"
+               formControlName="date_fin"
+               name="dp"
+               (click)="fin.toggle()"
+               ngbDatepicker
+               #fin="ngbDatepicker">
+
+      </div>
+    </div>
+  </div>
+
+  <div class="col-2 d-flex">
+
+    <button type="submit"
+            class="btn btn-sm mr-2 d-flex align-items-center btn-success">
+      <i class="fad   fa-circle-notch fa-spin"
+         *ngIf="loading"></i>
+      Valider
+    </button>
+
+    <button type="button"
+            (click)="resetDate()"
+            *ngIf="form.get('date_debut')?.value || form.get('date_fin')?.value"
+            class="btn btn-sm  d-flex align-items-center btn-secondary">
+      Reset
+    </button>
+  </div>
+
+</form>
