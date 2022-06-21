@@ -36,7 +36,7 @@
     </app-modal>
 
     <app-modal [configuration]="{ name: 'enregistrement-prestations-show-modal', titre: 'Voir les détails de l\'enregistrement', icone:'plus', taille: 'lg' }"
-               (closed)="helper.navigation.deleteFragmentFromUrl()">
+               (closed)="router.navigate(['./'], { relativeTo: route })">
       <router-outlet></router-outlet>
     </app-modal>
 

@@ -28,7 +28,7 @@ export class EnregistrementPrestationsComponent
     this.hideSidebar();
     this.subscriptions['modal'] =
       this.enregistrementService.showModal$.subscribe(() => {
-        this.helper.modal.show('enregistrement-beneficiaires-show-modal');
+        this.helper.modal.show('enregistrement-prestations-show-modal');
       });
   }
 
