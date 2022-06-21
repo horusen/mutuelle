@@ -76,6 +76,22 @@ export class EnregistrementBeneficiairesService extends BaseService<Enregistreme
     );
   }
 
+  storeBulk(elements: object[]) {
+    return this.factory.post(`${this.endPoint}/bulk`, elements).pipe(
+      tap({
+        next: (response: any[]) => {
+          let data = response.map((enregistrement: any) =>
+            this.transformData(enregistrement)
+          );
+          this.unshiftItemInData(data);
+        },
+        error: (error) => {
+          this.errorResponseHandler(error);
+        },
+      })
+    );
+  }
+
   update(id: number, data: {}) {
     return this.factory.put(`${this.endPoint}/${id}`, data).pipe(
       tap({

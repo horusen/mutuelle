@@ -3,6 +3,7 @@ import { EnregistrementPrestation } from './enregistrement-prestations.model';
 import { BaseContainerComponent } from './../../shared/base-component/base-container.component';
 import { EnregistrementPrestationsService } from './enregistrement-prestations.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { ModalLoadingService } from '../modal-loading/modal-loading.service';
 
 @Component({
   selector: 'app-enregistrement-prestations',
@@ -16,7 +17,8 @@ export class EnregistrementPrestationsComponent
   constructor(
     public enregistrementService: EnregistrementPrestationsService,
     public router: Router,
-    public route: ActivatedRoute
+    public route: ActivatedRoute,
+    public modalLoadingService: ModalLoadingService
   ) {
     super(enregistrementService, router, route, 'enregistrement-prestations');
   }
@@ -46,10 +48,12 @@ export class EnregistrementPrestationsComponent
   }
 
   onParsedDataFromCsv(data: any) {
+    this.modalLoadingService.show('Importation du fichier CSV en cours.');
     let enregistrements = this.parseToEnregistrementPrestation(data);
     this.enregistrementService
       .storeBulk(enregistrements)
       .subscribe((response) => {
+        this.modalLoadingService.hide();
         this.helper.notification.alertSuccess();
         setTimeout(() => {
           this.helper.notification.toastSuccess(

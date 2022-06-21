@@ -44,7 +44,7 @@ export class HelperText {
   }
 
   private serializeString = (item: string) => {
-    return item.toLocaleLowerCase().replace(' ', '_');
+    return item.trim().toLocaleLowerCase().replace(/\s+/g, '_');
   };
 
   serializeObjectPropertyKey(object: any) {
